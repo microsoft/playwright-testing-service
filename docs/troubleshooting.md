@@ -1,0 +1,52 @@
+# Troubleshooting
+
+## 1. Tests run slow. 
+
+Microsoft Playwright Testing currently hosts all service browsers in the East US region, which may result in higher network latency if your client machine and web application being tested are in a different region. We are working on adding more regions to improve performance.
+
+In the meantime, we recommend running your tests from a machine located closer to the East US region. One option is to use [GitHub Codespaces](https://docs.github.com/en/codespaces) if it's feasible for you. 
+
+## 2. Tests are failing with 401 error.
+
+Your access key may be invalid or expired. Make sure you are using the correct access key. You can generate a new access key from the home page of your workspace. 
+
+## 3. Tests are failing because of timeout.
+
+Your tests could be timing out because of the following reasons:    
+    
+1. Your client machine is in a different region than the browsers. 
+    
+    Connecting to service-hosted browsers introduces some network latency, so you'll need to increase your timeout settings in Playwright configuration. You can set new timeout values for the [these](https://playwright.dev/docs/test-timeouts) properties. If you are not sure, start with increasing the test timeout in `playwright.service.config.ts`.
+
+2. Trace files cause performance issues (currently a known problem). 
+        
+    When the service sends trace files to the client, it can create congestion that causes tests to fail due to timeout issues. We are aware of this problem and are working on optimizing the data exchange between the service and client to prevent this from happening. In the meantime, try [disabling tracing in the Playwright configuration file](https://playwright.dev/docs/api/class-testoptions#test-options-trace).
+
+## 4. Tests seem to hang. 
+
+Your tests might hang due to a piece of code that's unintentionally paused the test execution. For example, you might have added pause statements while debugging your test.
+
+Search for any instances of `pause()` in your code and comment them out.
+
+## 5. Tests are failing with error: "browserType.launch: Chromium distribution 'chrome'"
+
+The service currently does not support testing on Google Chrome and Microsoft Edge. We are working on building this support. 
+
+## 6. The time displayed in the browser is different from my local time
+
+Web applications often display the time based on the user's location. When testing with Microsoft Playwright Testing this can cause a mismatch because the client and the service browsers may be in different regions.
+
+You can mitigate the issue by explicitly [setting the time zone in the Playwright configuration file](https://playwright.dev/docs/emulation#locale--timezone).
+
+## 7. Not able to test locally hosted web applications
+
+Make sure to set `exposeNetwork` as `'localhost'` in the `playwright.service.config.ts` file. If your web application is hosted on a different IP, you can replace localhost with the IP or with `*`
+
+## Open an issue with the product team
+
+If you are still facing problems, open an [issue on GitHub](https://github.com/microsoft/playwright-service-preview/issues/new/choose). To help us debug better, please attach log file on the issue. You can create it by setting the following environment variables in your machine before running your tests. 
+        
+        DEBUG=pw:*  
+        DEBUG_FILE=log.log 
+
+If you do not want to share the log on GitHub, email it to us at pw-service-preview@microsoft.com with the relevant GitHub issue link. 

@@ -1,0 +1,16 @@
+{
+  "name": "get-started-sample",
+  "description": "Playwright Service get started sample",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test -c playwright.service.config.ts --workers=20",
+    "test-local": "npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "1.33",
+    "dotenv": "^16.0.3"
+  }
+}
