@@ -1,11 +1,9 @@
-**:bangbang: IMPORTANT: Microsoft Playwright Testing has NOT been publicly disclosed. All information in this repository is Microsoft confidential.**
-
 # Microsoft Playwright Testing Private preview
 
 Microsoft Playwright Testing is a new service offering built on [Playwright](https://playwright.dev), a fast-growing open-source framework that enables reliable end-to-end testing for modern web apps. Microsoft Playwright Testing is designed to help development teams speed up the delivery of features while ensuring high quality. The service provides users access to many cloud-hosted browsers, enabling them to run multiple Playwright tests in parallel and across various operating system-browser combinations. [See the demo.](https://1drv.ms/v/s!AnC03V99SiLFkGT9LnBxmGWzU8lt?e=SLZc19)
 
 > [!IMPORTANT]
-> The service is in early stages of development, so this private repository is being used for announcements, docs, issues, and discussions related to the Playwright Service private preview. **Please remember that all information here is Microsoft confidential and covered by a non-disclosure agreement (NDA).**
+> The service is in early stages of development, so this private repository is being used for announcements, docs, issues, and discussions related to the Microsoft Playwright Testing private preview.
 
 ## Get Started
 
