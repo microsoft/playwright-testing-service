@@ -22,8 +22,8 @@ Next, try:
 
 We welcome your questions and feedback:
 
-- [Create an issue](https://github.com/microsoft/playwright-service-preview/issues) for reporting product bugs and feature suggestions.
-- [Discussions](https://github.com/microsoft/playwright-service-preview/discussions) for questions and engaging with the community.
+- [Create an issue](https://aka.ms/mpt/feedback) for reporting product bugs and feature suggestions.
+- [Discussions](https://aka.ms/mpt/discussions) for questions and engaging with the community.
 
 For issues and questions related to Playwright library, please go to [github.com/microsoft/playwright](https://github.com/microsoft/playwright).
 

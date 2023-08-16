@@ -6,7 +6,7 @@ In this quickstart, you'll learn how to run your existing tests with highly para
 
 While we're in private preview, you'll need to perform a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./onboard-subscription.md)
 
-We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Feel free to[ reach out to us](https://github.com/microsoft/playwright-service-preview/issues) if you encounter any challenges or have any questions.
+We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Feel free to[ reach out to us](https://aka.ms/mpt/feedback) if you encounter any challenges or have any questions.
 
 ## Create a Workspace
 
@@ -35,7 +35,7 @@ Microsoft Playwright Test (MPT) browsers run in the cloud and not inside your lo
 
 ## Add Microsoft Playwright Testing configuration
 
-Add the service config to your project in the same location as your current Playwright config file. Use [playwright.service.config.ts](https://github.com/microsoft/playwright-service-preview/blob/main/samples/get-started/playwright.service.config.ts) as a starting point.
+Add the service config to your project in the same location as your current Playwright config file. Use [playwright.service.config.ts](https://aka.ms/mpt/service-config) as a starting point.
 
 Service config is used to:
 - Point Playwright at Microsoft Playwright Testing server.
@@ -73,7 +73,7 @@ Run Playwright tests against browsers managed by the service using the configura
 Once your tests are running smoothly with the service, experiment with varying the number of parallel workers to determine the optimal configuration that minimizes test completion time. With Microsoft Playwright Testing, you can run with up to 50 parallel workers, but several factors come into play that will determine the best configuration for your project, such as the CPU, memory, and network resources of your client machine, the target application's load-handling capacity, and the type of actions carried out in your tests.
 
 # Troubleshooting & Known Issues
-If you're having trouble running your tests on the service, take a look at our [troubleshooting guide](./troubleshooting.md) and [known issues](./known-issues.md) for help. If you are still stuck or have any questions, feel free to [open an issue](https://github.com/microsoft/playwright-service-preview/issues) and engage with the product team.
+If you're having trouble running your tests on the service, take a look at our [troubleshooting guide](./troubleshooting.md) and [known issues](./known-issues.md) for help. If you are still stuck or have any questions, feel free to [open an issue](https://aka.ms/mpt/feedback) and engage with the product team.
 
 # Next Steps
 * Experiment with different levels of parallelism (at this time, you can run up to 50 parallel workers). Test performance can be affected by multiple factors, including your target application's response times under load, network latency between the browsers and target application, and the test scenario itself. [Learn more about how parallelism works with Playwright.](./concept-understanding-parallelism.md)

@@ -10,7 +10,7 @@ Before you can get started with the Microsoft Playwright Testing preview, you ne
 ## Request access by email
 
 1. Skip this step if you have already received an email confirming that your subscription has been allow-listed.
-1. Otherwise, send an email to the product team at [pw-service-preview@microsoft.com](mailto:pw-service-preview@microsoft.com?subject=Microsoft%20Playwright%20Testing%20preview%20access%20request&body=Subscriptionid=<insert%20your%20subscription%20id>). Include your Azure subscription ID and use the subject line: "Microsoft Playwright Testing preview access request". Once you have done this, you will receive a confirmation email within 1-2 business days when your subscription is successfully onboarded. 
+1. Otherwise, send an email to the product team at [playwrighttesting@microsoft.com](mailto:playwrighttesting@microsoft.com?subject=Microsoft%20Playwright%20Testing%20preview%20access%20request&body=Subscriptionid=<insert%20your%20subscription%20id>). Include your Azure subscription ID and use the subject line: "Microsoft Playwright Testing preview access request". Once you have done this, you will receive a confirmation email within 1-2 business days when your subscription is successfully onboarded. 
 
 ## Register Microsoft Playwright Testing resource provider for your subscription
 

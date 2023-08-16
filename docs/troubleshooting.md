@@ -51,9 +51,9 @@ Important Note: Microsoft Playwright Testing is available at no cost while in pr
 
 ## Open an issue with the product team
 
-If you are still facing problems, open an [issue on GitHub](https://github.com/microsoft/playwright-service-preview/issues/new/choose). To help us debug better, please attach log file on the issue. You can create it by setting the following environment variables in your machine before running your tests. 
+If you are still facing problems, open an [issue on GitHub](https://aka.ms/mpt/feedback). To help us debug better, please attach log file on the issue. You can create it by setting the following environment variables in your machine before running your tests. 
         
         DEBUG=pw:*  
         DEBUG_FILE=log.log 
 
-If you do not want to share the log on GitHub, email it to us at pw-service-preview@microsoft.com with the relevant GitHub issue link. 
+If you do not want to share the log on GitHub, email it to us at playwrighttesting@microsoft.com with the relevant GitHub issue link. 
