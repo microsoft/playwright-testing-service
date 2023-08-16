@@ -1,37 +1,48 @@
-import playwrightService from './playwright-service';
-// Import your existing config here.
+/*
+* This file enables Playwright client to connect to remote browsers.
+* It should be placed in the same directory as playwright.service.config.ts.
+* The file is temporary for private preview.
+*/
+
+import { defineConfig } from '@playwright/test';
 import config from './playwright.config';
+import dotenv from 'dotenv';
 
-if (!config.use)
-  config.use = {};
+// Define environment on the dev box in .env file:
+//  .env:
+//    PLAYWRIGHT_SERVICE_ACCESS_KEY=XXX
+//    PLAYWRIGHT_SERVICE_URL=XXX
+//    PLAYWRIGHT_SERVICE_OS=XXX
 
-// Set connectOptions to instruct Playwright to connect to the service.
-config.use.connectOptions = playwrightService.connectOptions({
+// Define environment in your GitHub workflow spec.
+//  env:
+//    PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_KEY }}
+//    PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
+//    PLAYWRIGHT_SERVICE_OS: ${{ matrix.service-os }}
+//    PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
 
-  // Your access key, generated at https://17157345.playwright-int.io/
-  accessKey: process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY || '',
+dotenv.config();
 
-  // Set the browser's operating system. Can be: 'linux' or 'windows'.
-  os: 'linux',
+// Name the test run if it's not named yet.
+process.env.PLAYWRIGHT_SERVICE_RUN_ID = process.env.PLAYWRIGHT_SERVICE_RUN_ID || new Date().toISOString();
 
-
-  // Comment out if your tests only target public endpoints.
-  exposeNetwork: '<loopback>', // Expose localhost, 127.0.0.1, [:1] to the service
-
-  // Connection timeout in milliseconds.
-  timeout: 3 * 60 * 1000,
+export default defineConfig(config, {
+  // Define more generous timeout for the service operation if necessary.
+  // timeout: 60000,
+  // expect: {
+  //   timeout: 10000,
+  // },
+  use: {
+    connectOptions: {
+      wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
+        os: process.env.PLAYWRIGHT_SERVICE_OS || 'linux',
+        runId: process.env.PLAYWRIGHT_SERVICE_RUN_ID
+      })}`,
+      timeout: 30000,
+      headers: {
+        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY!
+      },
+      exposeNetwork: '<loopback>'
+    }
+  }
 });
-
-// Enable high parallelism when using the service
-config.workers = 20;
-
-// Enable retries
-config.retries = 2;
-
-// Increase timeouts when running in service mode to accommodate network latency
-// Un-comment below lines to adjust timeouts if you are getting timeout error while running tests on the service.
-//config.timeout = config.timeout ? config.timeout * 2 : 180000;
-//config.use.actionTimeout = config.use.actionTimeout ? config.use.actionTimeout * 2 : 0;
-//(!config.expect ? (config.expect = { timeout: 5000 }) : (config.expect.timeout && (config.expect.timeout *= 2)));
-
-export default config;

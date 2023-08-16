@@ -13,7 +13,7 @@ Before running this sample, ensure you have completed these steps:
     cd playwright-service-preview/samples/jest/jest-playwright
     ```
 
-1. Open the [Playwright portal](https://17157345.playwright-int.io/) and generate an Access Key.
+1. Open the [Playwright portal](https://aka.ms/mpt/portal) and generate an Access Key.
 
 1. Create a `.env` file in the sample's directory and define the following environment variable:
     ```bash

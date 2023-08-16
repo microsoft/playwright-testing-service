@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const playwrightServiceConnectOptions = playwrightService.connectOptions({
 
-  // Your access key, generated at https://17157345.playwright-int.io/
+  // Your access key, generated at https://aka.ms/mpt/portal
   accessKey: process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY || '',
 
   // Set the browser's operating system. Can be: 'linux' or 'windows'.

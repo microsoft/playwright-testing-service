@@ -20,4 +20,4 @@
 
     NOTE: To enable this user to create a workspace, assign owner/contributor role  
 
-7. You can now sign-in to [Playwright portal](https://17157345.playwright-int.io/) using the user credentials you created in step#3
+7. You can now sign-in to [Playwright portal](https://aka.ms/mpt/portal) using the user credentials you created in step#3

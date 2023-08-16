@@ -1,17 +1,17 @@
-# Understanding parallelism in Playwright Service
+# Understanding parallelism in Microsoft Playwright Testing
 
-With the Playwright Service you can speed up test execution by increasing parallelism at cloud-scale. This article explains the different levels to configure parallelism for your tests.
+With Microsoft Playwright Testing you can speed up test execution by increasing parallelism at cloud-scale. This article explains the different levels to configure parallelism for your tests. Lastly, we also describe current limits and expected service behavior when those limits are exceeded.
 
 ## Worker processes
 
-All tests run in worker processes. These processes are OS processes, running independently, in parallel, orchestrated by the Playwright test runner. All workers have identical environments and each starts its own browser. The more worker processes that are available, the faster your tests will run.
+All tests run in worker processes. These processes are OS processes, running independently, in parallel, orchestrated by the Playwright test runner. All workers have identical environments and each starts its own browser. Generally, increasing the number of parallel workers can reduce the time it takes to complete the full test suite - but there are limits.  
 
-When we run tests locally, we're limited to the number of CPU cores on our machine (as a rule of thumb, each browser instance requires 1 CPU core). By default, Playwright Test will limit the number of workers to one half of the number of CPU cores.
+When we run tests locally, we're limited to the number of CPU cores on our machine (as a rule of thumb, each browser instance requires 1 CPU core). By default, Playwright Test will limit the number of workers to one half of the number of CPU cores. Beyond a certain point, adding more browser instances can lead to resource contention, slowing down each worker and introducing test flakiness.
 
 When we use the service, we can increase the number of workers at cloud-scale through simple configuration. In this setup, the worker processes continue to run locally but the browser instances -- which are resource-intensive -- now run in the cloud. The configuration can be set in our [global config file](https://playwright.dev/docs/test-configuration), or passed as an argument with the CLI:
 
 ```bash
-npm playwright test --workers=30
+npx playwright test --workers=30
 ```
 
 ## Parallelism hierarchy
@@ -71,8 +71,21 @@ graph TD
     A(CLI) --> D("🗄️Project 3")
 ```
 
+## Service limits
+Microsoft Playwright Testing currently allows for up to 50 parallel workers per workspace. This limit is applicable to all active tests within a workspace. For example, multiple CI pipelines may concurrently initiate browser requests to Microsoft Playwright Testing. If the demand for parallel workers exceeds the 50-worker limit, any excess connection requests will be placed in a queue. Subsequently, one of two events will happen:
+
+1. When a browser becomes available within the workspace, a queued request will be allocated a browser. The corresponding worker's tests will then begin executing.
+
+1. If a queued request cannot be fulfilled before a specified timeout, a test timeout error will be generated and the request will be removed from the queue. The timeout duration can be adjusted via [Playwright test timeout properties](https://playwright.dev/docs/test-timeouts) in the Playwright configuration. (Note that server timeout may also occur, but this is not user-customizable.)
+
+Please note that the service will return an HTTP status code of 429 (Too Many Requests) if it receives an excessive number of requests.
+
+> [!NOTE]
+> We continuously monitor service operations and make adjustments as needed. If you find that your test execution scenarios are being disrupted without good reason, or if the service is not meeting your expectations, please [share your feedback](https://aka.ms/mpt/feedback) with us.
+
+
 ## Next steps
 
 - For more information about configuring workers and test order in Playwright, see [Playwright OSS Parallelism and Sharding](https://playwright.dev/docs/test-parallel).
 
-- [Integrate Playwright Service in a CI/CD pipeline.](./configure-tests-with-ci-cd-pipeline.md)
+- [Integrate Microsoft Playwright Testing in a CI/CD pipeline.](./configure-tests-with-ci-cd-pipeline.md)

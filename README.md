@@ -1,20 +1,11 @@
 **:bangbang: IMPORTANT: Microsoft Playwright Testing has NOT been publicly disclosed. All information in this repository is Microsoft confidential.**
 
-# Microsoft Playwright Testing Preview
+# Microsoft Playwright Testing Private preview
 
-*Microsoft Playwright Testing* (aka *Playwright Service*) is a new managed service offering designed to extend Playwright's open-source library capabilities:
-
-1) Speed up test execution with high parallelism across multiple browsers and OS platforms. [Click Here](https://1drv.ms/v/s!AnC03V99SiLFkGT9LnBxmGWzU8lt?e=SLZc19) to see the demo.
-3) Troubleshoot test issues through easy access to stored, rich test metadata like logs, traces, and videos. (Coming soon)
+Microsoft Playwright Testing is a new service offering built on [Playwright](https://playwright.dev), a fast-growing open-source framework that enables reliable end-to-end testing for modern web apps. Microsoft Playwright Testing is designed to help development teams speed up the delivery of features while ensuring high quality. The service provides users access to many cloud-hosted browsers, enabling them to run multiple Playwright tests in parallel and across various operating system-browser combinations. [See the demo.](https://1drv.ms/v/s!AnC03V99SiLFkGT9LnBxmGWzU8lt?e=SLZc19)
 
 > [!IMPORTANT]
 > The service is in early stages of development, so this private repository is being used for announcements, docs, issues, and discussions related to the Playwright Service private preview. **Please remember that all information here is Microsoft confidential and covered by a non-disclosure agreement (NDA).**
-
-
-## Prerequisites
-
-- An Azure account with an active subscription. ([Create an account for free](https://azure.microsoft.com/free/))
-- [Onboard your Azure subscription to Microsoft Playwright Testing Preview](./docs/onboard-subscription.md).
 
 ## Get Started
 
@@ -35,6 +26,10 @@ We welcome your questions and feedback:
 - [Discussions](https://github.com/microsoft/playwright-service-preview/discussions) for questions and engaging with the community.
 
 For issues and questions related to Playwright library, please go to [github.com/microsoft/playwright](https://github.com/microsoft/playwright).
+
+## Known Issues
+
+[All known issues are documented here](./docs/known-issues.md)
 
 ## Contributing
 
