@@ -1,0 +1,32 @@
+# TODO: Place this file in the .github/workflows folder of your repository
+# This sample assumes the working directory is ./samples/get-started
+name: Get Started sample
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install dependencies
+      working-directory: samples/get-started
+      run: npm ci
+    - name: Run Playwright tests  
+      working-directory: samples/get-started
+      env:
+        PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{secrets.PLAYWRIGHT_SERVICE_ACCESS_KEY}}
+      run: npx playwright test -c playwright.service.config.ts --workers=30
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: samples/get-started/playwright-report/
+        retention-days: 10
