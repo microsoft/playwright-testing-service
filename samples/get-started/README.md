@@ -7,8 +7,8 @@ Follow the [quickstart](../../docs/quickstart.md) if you haven't created a works
 ## Set up sample
 1. Clone this sample:
     ```bash
-    git clone https://github.com/microsoft/playwright-service-preview
-    cd playwright-service-preview/samples/get-started
+    git clone https://github.com/microsoft/playwright-testing-service
+    cd playwright-testing-service/samples/get-started
     ```
 
 1. Install dependencies:
