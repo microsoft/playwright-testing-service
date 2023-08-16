@@ -9,8 +9,8 @@ Before running this sample, ensure you have completed these steps:
 ## Set up sample
 1. Clone this sample:
     ```bash
-    git clone https://github.com/microsoft/playwright-service-preview
-    cd playwright-service-preview/samples/jest/jest-playwright
+    git clone https://github.com/microsoft/playwright-testing-service
+    cd playwright-testing-service/samples/jest/jest-playwright
     ```
 
 1. Open the [Playwright portal](https://aka.ms/mpt/portal) and generate an Access Key.
