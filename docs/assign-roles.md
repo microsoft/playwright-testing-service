@@ -1,11 +1,11 @@
 
-# Manage access to a Microsoft Playwright Testing Preview workspace
+# Manage access to a workspace
 
-In this article, you learn how to manage access to a Microsoft Playwright Testing workspace. The service uses [Azure role-based access control](/azure/role-based-access-control/overview) (Azure RBAC) to authorize access rights to your workspace. Role assignments are the way you control access to resources using Azure RBAC.
+In this article, you will learn how to manage access to a Microsoft Playwright Testing workspace. The service uses [Azure role-based access control](/azure/role-based-access-control/overview) (Azure RBAC) to authorize access rights to your workspace. Role assignments are the way you control access to resources using Azure RBAC.
 
 ## Default roles
 
-Microsoft Playwright Testing workspaces uses three Azure built-in roles to manage access to a workspace. To grant users access to a workspace, you assign them one of the following Azure built-in roles:
+Microsoft Playwright Testing workspaces use three Azure built-in roles to manage access to a workspace. To grant users access to a workspace, you assign them one of the following Azure built-in roles:
 
 | Role | Access level |
 | --- | --- |
@@ -18,7 +18,7 @@ Microsoft Playwright Testing workspaces uses three Azure built-in roles to manag
 
 ## Grant access to a user
 
-You can grant a user access to a Microsoft Playwright Testing workspace in the Azure portal:
+You can grant a user access to a Microsoft Playwright Testing workspace using the Azure portal:
 
 1. Sign in to the [Azure portal](https://portal.azure.com), and go to your Microsoft Playwright Testing workspace.
 
@@ -26,20 +26,20 @@ You can grant a user access to a Microsoft Playwright Testing workspace in the A
 
     If you don't have permissions to assign roles, the Add role assignment option will be disabled.
 
-    ![Screenshot that shows how to add a role assignment to your workspace in the Azure portal](./media/how-to-assign-roles/add-role-assignment.png)
+    ![Screenshot that shows how to add a role assignment to your workspace in the Azure portal](./media/assign-roles/add-role-assignment.png)
     
 1. On the **Role** tab, select **Privileged administrator roles**.
 
 1. Select one of the Microsoft Playwright Testing [default roles](#default-roles), and then select **Next**.
 
-    ![Screenshot that shows the list of roles when adding a role assignment in the Azure portal.](./media/how-to-assign-roles/add-role-assignment-select-role.png)
+    ![Screenshot that shows the list of roles when adding a role assignment in the Azure portal.](./media/assign-roles/add-role-assignment-select-role.png)
     
 
 1. On the **Members** tab, make sure **User, group, or service principal** is selected.
 
 1. Then, select **Select members**, find and select the users you want to grant access to, and then select **Next**.
 
-    ![Screenshot that shows the member selection interface when adding a role assignment in the Azure portal.](./media/how-to-assign-roles/add-role-assignment-select-members.png)
+    ![Screenshot that shows the member selection interface when adding a role assignment in the Azure portal.](./media/assign-roles/add-role-assignment-select-members.png)
    
 
 1. Select **Review + assign** to assign the role.
@@ -48,7 +48,7 @@ You can grant a user access to a Microsoft Playwright Testing workspace in the A
 
 ## Revoke access for a user
 
-You can revoke a user's access to a Microsoft Playwright Testing workspace in the Azure portal:
+You can revoke a user's access to a Microsoft Playwright Testing workspace using the Azure portal:
 
 1. Sign in to the [Azure portal](https://portal.azure.com), and go to your Microsoft Playwright Testing workspace.
 
@@ -56,7 +56,7 @@ You can revoke a user's access to a Microsoft Playwright Testing workspace in th
 
 1. In the list of role assignments, add a checkmark next to the user and role you want to remove, and then select **Remove**.
 
-    ![Screenshot that shows the list of role assignments and how to delete an assignment in the Azure portal.](./media/how-to-assign-roles/remove-role-assignment.png)
+    ![Screenshot that shows the list of role assignments and how to delete an assignment in the Azure portal.](./media/assign-roles/remove-role-assignment.png)
 
 
 1. Select **Yes** in the confirmation window to remove the role assignment.
@@ -65,7 +65,7 @@ You can revoke a user's access to a Microsoft Playwright Testing workspace in th
 
 ## (Optional) Use Azure AD security groups to manage workspace access
 
-Instead of granting or revoking access for individual users, you can manage access for a group of users by using Azure AD security groups. This approach has the following benefits:
+ Instead of granting or revoking access to individual users, you can manage access for groups of users using Azure AD security groups. This approach has the following benefits:
 
 - Avoid the need for granting team or project leaders the Owner role on the workspace. You can grant them access only to the security group to let them manage access to the workspace.
 - You can organize, manage and revoke users' permissions on a workspace and other resources as a group, without having to manage permissions on a user-by-user basis.
@@ -79,11 +79,11 @@ To use Azure AD security groups:
 
 1. Grant the security group access on the workspace by assigning the group one of the [default roles](#default-roles).
 
-1. [Add group members](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal). The added members can now access to the workspace.
+1. [Add group members](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal). The added members can now access the workspace.
 
 ## Troubleshooting
 
-Here are a few things to be aware of while you use Azure role-based access control (Azure RBAC):
+Here are a few points to consider when using Azure role-based access control (Azure RBAC):
 
 - To assign roles in Azure, your account needs the [User Access Administrator](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator), [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner), or one of the [classic administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles).
 

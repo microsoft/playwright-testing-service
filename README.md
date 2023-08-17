@@ -13,7 +13,7 @@ The best place to get started:
 
 Next, try:
 
-* [Run tests in a CI/CD pipeline.](./docs/configure-tests-with-ci-cd-pipeline.md)
+* [Run tests in a CI/CD pipeline.](./docs/cicd.md)
 <!-- * [Test privately hosted endpoints.](./docs/how-to-test-private-endpoints.md) -->
 
 ## Discussions and Feedback

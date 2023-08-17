@@ -12,13 +12,11 @@ import dotenv from 'dotenv';
 //  .env:
 //    PLAYWRIGHT_SERVICE_ACCESS_KEY=XXX
 //    PLAYWRIGHT_SERVICE_URL=XXX
-//    PLAYWRIGHT_SERVICE_OS=XXX
 
 // Define environment in your GitHub workflow spec.
 //  env:
 //    PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_KEY }}
 //    PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
-//    PLAYWRIGHT_SERVICE_OS: ${{ matrix.service-os }}
 //    PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
 
 dotenv.config();
@@ -33,6 +31,7 @@ export default defineConfig(config, {
   //   timeout: 10000,
   // },
   use: {
+    // Specify the service endpoint.
     connectOptions: {
       wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
         os: process.env.PLAYWRIGHT_SERVICE_OS || 'linux',
@@ -42,6 +41,7 @@ export default defineConfig(config, {
       headers: {
         'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY!
       },
+      // Allow service to access the localhost.
       exposeNetwork: '<loopback>'
     }
   }
