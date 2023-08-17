@@ -1,6 +1,6 @@
-# Onboard your Azure subscription to Microsoft Playwright Testing Preview
+# Onboard your Azure subscription
 
-While we're in preview, to gain access to the service, you'll need to perform a few one-off steps. We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Don't worry, we're here to assist you every step of the way. Feel free to reach out to us if you encounter any challenges or have any questions.
+While we are in preview, you'll need to perform a few one-off steps to gain access to the service. We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Don't worry, we're here to assist you every step of the way. Feel free to reach out to us if you encounter any challenges or have any questions.
 
 Before you can get started with the Microsoft Playwright Testing preview, you need to perform the following steps:
 
@@ -36,7 +36,7 @@ Perform the following steps to register the Microsoft Playwright Testing resourc
 
 1. In the **Resource providers** section, use the search bar to find *Microsoft.AzurePlaywrightService*.
 
-    ![Screenshor for resource provider search](./media/onboarding-subscription/search-resource-provider.png)
+    ![Screenshot for resource provider search](./media/onboarding-subscription/search-resource-provider.png)
 
 1. Select **Microsoft.AzurePlaywrightService** from the provider list, and then select **Register**.
 
