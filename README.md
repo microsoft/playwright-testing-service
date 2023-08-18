@@ -1,33 +1,136 @@
 # Microsoft Playwright Testing Private preview
 
-Microsoft Playwright Testing is a new service offering built for [Playwright](https://playwright.dev), a fast-growing open-source framework that enables reliable end-to-end testing for modern web apps. Microsoft Playwright Testing is designed to help development teams speed up the delivery of features while ensuring high quality. The service provides users access to many cloud-hosted browsers, enabling them to run multiple Playwright tests in parallel and across various operating system-browser combinations. [See the demo.](https://1drv.ms/v/s!AnC03V99SiLFkGT9LnBxmGWzU8lt?e=SLZc19)
+Microsoft Playwright Testing service can speed up [Playwright](https://playwright.dev) test execution by increasing parallelism at cloud scale. The service is kept up-to-date with every new Playwright release, ensuring that you can run Playwright tests on a wide range of OS-browser combinations.
+
+#### [Watch the demo video](https://1drv.ms/v/s!AnC03V99SiLFkGT9LnBxmGWzU8lt?e=SLZc19)
+
+# How to start
+
+> [!NOTE]
+> We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Feel free to [reach out to us](https://aka.ms/mpt/feedback) if you encounter any challenges or have any questions.
+
+## Confirm access to the private preview
+
+While we're in private preview, you'll need to temporarily follow a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./docs/onboard-subscription.md)
+
+## Create a Workspace
+
+1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) using your Azure account credentials. You may want to bookmark the website.
+
+1. Create the Workspace.
+  ![Screenshot that shows creating a new workspace](./docs/media/quickstart/create-new-workspace.png)
+
+    |Field  |Description  |
+    |---------|---------|
+    |**Workspace Name** | A unique name to identify your workspace.<BR>The name can't contain special characters or whitespace. |
+    |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./onboard-subscription.md). |
+    |**Region** | This is where test run data will be stored for your workspace. |
+
+  > [!NOTE]
+  > If you don't see this screen, select an existing workspace and go to the next section.
+
+## Generate Access Key
+
+1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate key** to create the access key.
+
+1. Copy the access key.
+
+![Generate Access key](./docs/media/quickstart/Generate-access-key.png)
+
+
+## Obtain region endpoint
+
+> [!NOTE]
+> This is a temporary step during the private preview.
+
+ 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
+
+The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
+
+ ![Set workspace endpoint](./docs/media/quickstart/set-workspace-endpoint.png)
+
+## Set up environment
+
+Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_KEY` and `PLAYWRIGHT_SERVICE_URL` that you obtained in previous steps are available in your environment.
+
+We recommend using `dotenv` module to manage your environment. With `dotenv` you'll be using the `.env` file to define your environment variables.
 
 > [!IMPORTANT]
-> The service is in early stages of development, so this private repository is being used for announcements, docs, issues, and discussions related to the Microsoft Playwright Testing private preview.
+> Don't forget to add `.env` file to your `.gitignore` file in order to not leak your secrets.
 
-## Get Started
+```sh
+npm i --save-dev dotenv
+```
 
-The best place to get started:
+`.env` file
+```
+PLAYWRIGHT_SERVICE_ACCESS_KEY=eyJh...
+PLAYWRIGHT_SERVICE_URL=wss://westus3.api.playwright-int.io/api/authorize/connectSession
+```
 
-* Quickstart: [Run highly-parallelized tests with Microsoft Playwright Testing Preview.](./docs/quickstart.md)
+## Add service configuration
 
-Next, try:
+Add the service configuration to your project in the same location as your existing Playwright config file. Use [playwright.service.config.ts](https://aka.ms/mpt/service-config) as a starting point:
 
-* [Run tests in a CI/CD pipeline.](./docs/configure-tests-with-ci-cd-pipeline.md)
-<!-- * [Test privately hosted endpoints.](./docs/how-to-test-private-endpoints.md) -->
+```js
+// playwright.service.config.ts
 
-## Discussions and Feedback
+import { defineConfig } from '@playwright/test';
+import config from './playwright.config';
+import dotenv from 'dotenv';
 
-We welcome your questions and feedback:
+dotenv.config();
 
-- [Create an issue](https://aka.ms/mpt/feedback) for reporting product bugs and feature suggestions.
-- [Discussions](https://aka.ms/mpt/discussions) for questions and engaging with the community.
+// Name the test run if it's not named yet.
+process.env.PLAYWRIGHT_SERVICE_RUN_ID = process.env.PLAYWRIGHT_SERVICE_RUN_ID || new Date().toISOString();
 
-For issues and questions related to Playwright library, please go to [github.com/microsoft/playwright](https://github.com/microsoft/playwright).
+export default defineConfig(config, {
+    // Define more generous timeout for the service operation if necessary.
+    // timeout: 60000,
+    // expect: {
+    //   timeout: 10000,
+    // },
+    use: {
+    connectOptions: {
+      // Specify the service endpoint.
+      wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
+        os: process.env.PLAYWRIGHT_SERVICE_OS || 'linux',
+        runId: process.env.PLAYWRIGHT_SERVICE_RUN_ID
+      })}`,
+      timeout: 30000,
+      headers: {
+        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY!
+      },
+      // Allow service to access the localhost.
+      exposeNetwork: '<loopback>'
+    }
+  }
+});
+```
 
-## Known Issues
+The service configuration serves to:
+- Direct and authenticate Playwright to the Microsoft Playwright Testing service.
+- Override timeouts for service operations, if needed.
 
-[All known issues are documented here](./docs/known-issues.md)
+> [!NOTE]
+> Make sure your project uses @playwright/test version 1.37 or above.
+
+## Run the tests
+
+Run Playwright tests against browsers managed by the service using the configuration you created above.
+
+```sh
+npx playwright test --config=playwright.service.config.ts --workers=20
+```
+
+# Next Steps
+- Experiment with different levels of parallelism. Learn more about how [parallelism](./docs/concept-understanding-parallelism.md) works with Playwright.
+
+- Run tests in a [CI/CD pipeline.](./docs/configure-tests-with-ci-cd-pipeline.md)
+
+- Learn how to [manage access](./docs/how-to-assign-roles.md) to the created workspace.
+
+- Explore [troubleshooting guide](./docs/troubleshooting.md) and [known issues](./docs/known-issues.md).
 
 ## Contributing
 
