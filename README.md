@@ -33,9 +33,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate key** to create the access key.
 
-1. In a terminal window, set the access key as an environment variable.
-
-NOTE: Copy this key now as you will not be able to see the same key again.
+1. Copy the access key.
 
 ![Generate Access key](./docs/media/quickstart/Generate-access-key.png)
 
@@ -45,10 +43,9 @@ NOTE: Copy this key now as you will not be able to see the same key again.
 > [!NOTE]
 > This is a temporary step during the private preview.
 
- 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and run in your terminal.
+ 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
 
-> [!NOTE]
-> The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
+The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
 
  ![Set workspace endpoint](./docs/media/quickstart/set-workspace-endpoint.png)
 
