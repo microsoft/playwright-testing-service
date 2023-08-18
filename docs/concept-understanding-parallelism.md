@@ -36,7 +36,7 @@ npx playwright test --workers=30
 
 ## Service limits
 
-Microsoft Playwright Testing currently allows for up to 50 parallel workers per workspace. This limit is applicable to all active tests within a workspace. For example, multiple CI pipelines may concurrently initiate browser requests to Microsoft Playwright Testing. If the demand for parallel workers exceeds the 50-worker limit, any excess connection requests will be placed in a queue. When a browser becomes available within the workspace, a queued request will be allocated a browser. The corresponding worker's tests will then begin executing.
+Microsoft Playwright Testing currently allows for up to 50 parallel workers per workspace. This limit is applicable to all active tests within a workspace. For example, multiple CI pipelines may concurrently initiate browser requests to Microsoft Playwright Testing. If the demand for parallel workers exceeds the 50-worker limit, any excess connection requests will be placed in a queue. When a browser becomes available within the workspace, a queued request will be allocated a browser. The corresponding worker's tests will then begin executing. Additionaly, an Azure subscription can have a maximum of two workspaces.
 
 Please note that the service will return an HTTP status code of 429 (Too Many Requests) if it receives an excessive number of requests.
 
