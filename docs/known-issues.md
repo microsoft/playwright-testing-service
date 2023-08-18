@@ -6,9 +6,4 @@
 **Workaround:**
 Sign into the MPT portal with a regular browser tab.
 
-## Oops! We can't find the resource you are looking for
-![Screenshot for Oops error](./media/known-issues/session-timeout.png)
-In the Playwright portal, when a user's session expires due to inactivity, a generic "Oops" error message appears. This message does not offer precise instructions or helpful guidance for the user to resolve the situation.
 
-**Workaround**
-Simply log out of the Playwright portal and log back in.
