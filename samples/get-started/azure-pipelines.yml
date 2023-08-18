@@ -1,0 +1,45 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  "system.debug": false
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '>16.x'
+
+
+- task: PowerShell@2
+  enabled: true
+  displayName: "Install dependencies"
+  inputs:
+    targetType: 'inline'
+    script: 'npm ci'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/samples/get-started'
+
+- task: PowerShell@2
+  enabled: true
+  displayName: "Run Playwright tests"
+  env:
+    PLAYWRIGHT_SERVICE_ACCESS_KEY: $(Secret)
+  inputs:
+    targetType: 'inline'
+    script: 'npx playwright test -c playwright.service.config.ts --workers=20'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/samples/get-started'
+    
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)/samples/get-started/playwright-report/'
+    artifact: 'Playwright tests'
+    publishLocation: 'pipeline'
