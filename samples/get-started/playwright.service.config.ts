@@ -35,7 +35,7 @@ export default defineConfig(config, {
     // Specify the service endpoint.
     connectOptions: {
       wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
-        os: process.env.PLAYWRIGHT_SERVICE_OS || 'linux',
+        os: process.env.PLAYWRIGHT_SERVICE_OS || 'linux', // Another suported OS is 'windows'.
         runId: process.env.PLAYWRIGHT_SERVICE_RUN_ID
       })}`,
       timeout: 30000,
