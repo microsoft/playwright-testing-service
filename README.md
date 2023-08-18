@@ -11,10 +11,7 @@ Microsoft Playwright Testing service can speed up [Playwright](https://playwrigh
 
 ## Confirm access to the private preview
 
-> [!NOTE]
-> This is a temporary step during the private preview.
-
-While we're in private preview, you'll need to follow a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./docs/onboard-subscription.md)
+While we're in private preview, you'll need to temporarily follow a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./docs/onboard-subscription.md)
 
 ## Create a Workspace
 
@@ -61,7 +58,7 @@ Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_KEY` and `PLAYWRIGHT_SERVICE_URL` tha
 
 We recommend using `dotenv` module to manage your environment. With `dotenv` you'll be using the `.env` file to define your environment variables.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Don't forget to add `.env` file to your `.gitignore` file in order to not leak your secrets.
 
 ```sh
