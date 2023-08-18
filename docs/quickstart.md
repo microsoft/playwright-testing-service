@@ -8,7 +8,8 @@ In this quickstart, you'll learn how to run your existing tests with highly para
 
 ## Confirm access to the private preview
 
-> [!NOTE] This is a temporary step during the private preview.
+> [!NOTE]
+> This is a temporary step during the private preview.
 
 While we're in private preview, you'll need to follow a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./onboard-subscription.md)
 
@@ -25,7 +26,8 @@ While we're in private preview, you'll need to follow a few one-off steps in thi
     |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./onboard-subscription.md). |
     |**Region** | This is where test run data will be stored for your workspace. |
 
-  > [!NOTE] If you don't see this screen, select an existing workspace and go to the next section.
+  > [!NOTE]
+  > If you don't see this screen, select an existing workspace and go to the next section.
 
 ## Generate Access Key
 
@@ -40,11 +42,13 @@ NOTE: Copy this key now as you will not be able to see the same key again.
 
 ## Obtain region endpoint
 
-> [!NOTE] This is a temporary step during the private preview.
+> [!NOTE]
+> This is a temporary step during the private preview.
 
  1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and run in your terminal.
 
-> [!NOTE] The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
+> [!NOTE]
+> The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
 
  ![Set workspace endpoint](./media/quickstart/set-workspace-endpoint.png)
 
@@ -54,7 +58,8 @@ Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_KEY` and `PLAYWRIGHT_SERVICE_URL` tha
 
 We recommend using `dotenv` module to manage your environment. With `dotenv` you'll be using the `.env` file to define your environment variables.
 
-> [!NOTE] Don't forget to add `.env` file to your `.gitignore` file in order to not leak your secrets.
+> [!NOTE]
+> Don't forget to add `.env` file to your `.gitignore` file in order to not leak your secrets.
 
 ```sh
 npm i --save-dev dotenv
@@ -110,7 +115,8 @@ The service configuration is used to:
 - Point Playwright at Microsoft Playwright Testing server.
 - Override timeouts for service operations if necessary.
 
-> [!NOTE] Make sure your project uses @playwright/test version 1.37 or above.
+> [!NOTE]
+> Make sure your project uses @playwright/test version 1.37 or above.
 
 ## Run the tests
 
