@@ -1,6 +1,6 @@
 /*
 * This file enables Playwright client to connect to remote browsers.
-* It should be placed in the same directory as playwright.service.config.ts.
+* It should be placed in the same directory as playwright.config.ts.
 * The file is temporary for private preview.
 */
 
