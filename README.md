@@ -23,7 +23,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
     |Field  |Description  |
     |---------|---------|
     |**Workspace Name** | A unique name to identify your workspace.<BR>The name can't contain special characters or whitespace. |
-    |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./onboard-subscription.md). |
+    |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./docs/onboard-subscription.md). |
     |**Region** | This is where test run data will be stored for your workspace. |
 
   > [!NOTE]
