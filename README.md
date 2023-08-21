@@ -18,7 +18,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) using your Azure account credentials. You may want to bookmark the website.
 
 1. Create the Workspace.
-  ![Screenshot that shows creating a new workspace](./docs/media/quickstart/create-new-workspace.png)
+  ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/7ce589a1-9e77-4dd1-b0d6-d3164a4336fa)
 
     |Field  |Description  |
     |---------|---------|
@@ -35,7 +35,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. Copy the access key.
 
-![Generate Access key](./docs/media/quickstart/Generate-access-key.png)
+![Generate Access key](https://github.com/microsoft/playwright-testing-service/assets/12104064/e9893574-527a-4a07-9b67-360c8f181d10)
 
 
 ## Obtain region endpoint
@@ -47,7 +47,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace. 
 
- ![Set workspace endpoint](./docs/media/quickstart/set-workspace-endpoint.png)
+ ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/12104064/8f387beb-80dc-42e8-88cf-6d65584be50e)
 
 ## Set up environment
 
