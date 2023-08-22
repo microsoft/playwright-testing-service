@@ -37,7 +37,7 @@ You can mitigate the issue by explicitly [setting the time zone in the Playwrigh
 
 ## Not able to test web applications hosted behind firewall
 
-Make sure to set `exposeNetwork` as `*` or IP address/DNS of the application endpoint in the `playwright.service.config.ts` file. 
+Ensure that you set the `exposeNetwork` option in the `playwright.service.config.ts` file to make the network available on the connecting client to the cloud browser. Some typical values for this option include `"<loopback>"` for the localhost network, `"*"` to expose all networks, or the IP address/DNS of the application endpoint. For more information, refer to the [Playwright API documentation for `connect`](https://playwright.dev/docs/api/class-browsertype#browser-type-connect-option-expose-network).
 
 ## Azure subscription is inactive
 If you have an inactive Azure subscription, you will not be able to access the Microsoft Playwright Testing Private preview. Inactive subscriptions commonly result from expired Azure account free trials. 
@@ -49,9 +49,9 @@ Important Note: Microsoft Playwright Testing is available at no cost while in pr
 ## Workspace creation fails with error "The subscription registration is in 'Unregistered' state"
 ![Workspace creation failed](./media/troubleshooting/workspace-create-error.png)
 
-This error indicates that your Azure subscription is not registered with Microsoft Playwright Testing's resource provider. Please follow these steps to [register your subsciption with resource provider](./onboard-subscription.md) to resolve. 
+This error indicates that your Azure subscription is not registered with the Microsoft Playwright Testing resource provider. To resolve this issue, please follow the steps outlined in the [Register Microsoft Playwright Testing resource provider for your subscription](./onboard-subscription.md#register-microsoft-playwright-testing-resource-provider-for-your-subscription) guide. 
 
-NOTE: Resource provider registration is required only till the service is in private preview. 
+> **Note:** Resource provider registration is only required while the service is in private preview.
 
 ## Open an issue with the product team
 
