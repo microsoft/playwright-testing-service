@@ -28,9 +28,6 @@ Your tests might hang due to a piece of code that's unintentionally paused the t
 
 Search for any instances of `pause()` in your code and comment them out.
 
-## Tests are failing with error: "browserType.launch: Chromium distribution 'chrome'"
-
-The service currently does not support testing on Google Chrome and Microsoft Edge. We are working on building this support. 
 
 ## The time displayed in the browser is different from my local time
 
@@ -38,9 +35,9 @@ Web applications often display the time based on the user's location. When testi
 
 You can mitigate the issue by explicitly [setting the time zone in the Playwright configuration file](https://playwright.dev/docs/emulation#locale--timezone).
 
-## Not able to test locally hosted web applications
+## Not able to test web applications hosted behind firewall
 
-Make sure to set `exposeNetwork` as `'localhost'` in the `playwright.service.config.ts` file. If your web application is hosted on a different IP, you can replace localhost with the IP or with `*`
+Ensure that you set the `exposeNetwork` option in the `playwright.service.config.ts` file to make the network available on the connecting client to the cloud browser. Some typical values for this option include `"<loopback>"` for the localhost network, `"*"` to expose all networks, or the IP address/DNS of the application endpoint. For more information, refer to the [Playwright API documentation for `connect`](https://playwright.dev/docs/api/class-browsertype#browser-type-connect-option-expose-network).
 
 ## Azure subscription is inactive
 If you have an inactive Azure subscription, you will not be able to access the Microsoft Playwright Testing Private preview. Inactive subscriptions commonly result from expired Azure account free trials. 
@@ -48,6 +45,14 @@ If you have an inactive Azure subscription, you will not be able to access the M
 To confirm that you have a valid subscription, navigate to the [**Subscriptions**](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade) blade in the Azure portal and check the **Status** column for your subscription. If it is not marked as *Active*, you will need to [reactivate the subscription](https://learn.microsoft.com/azure/cost-management-billing/manage/subscription-disabled) and select an appropriate plan. 
 
 Important Note: Microsoft Playwright Testing is available at no cost while in private preview. Hence, if you are using your subscription exclusively for Microsoft Playwright Testing, there will be no associated charges. 
+
+## Workspace creation fails with error "The subscription registration is in 'Unregistered' state"
+![workspace-creation-failed](https://github.com/microsoft/playwright-testing-service/assets/4140290/25776787-9c9b-4453-8729-fa53d4923670)
+
+
+This error indicates that your Azure subscription is not registered with the Microsoft Playwright Testing resource provider. To resolve this issue, please follow the steps outlined in the [Register Microsoft Playwright Testing resource provider for your subscription](./onboard-subscription.md#register-microsoft-playwright-testing-resource-provider-for-your-subscription) guide. 
+
+> **Note:** Resource provider registration is only required while the service is in private preview.
 
 ## Open an issue with the product team
 
