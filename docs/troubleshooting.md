@@ -47,7 +47,8 @@ To confirm that you have a valid subscription, navigate to the [**Subscriptions*
 Important Note: Microsoft Playwright Testing is available at no cost while in private preview. Hence, if you are using your subscription exclusively for Microsoft Playwright Testing, there will be no associated charges. 
 
 ## Workspace creation fails with error "The subscription registration is in 'Unregistered' state"
-![Workspace creation failed](./media/troubleshooting/workspace-create-error.png)
+![workspace-creation-failed](https://github.com/microsoft/playwright-testing-service/assets/4140290/25776787-9c9b-4453-8729-fa53d4923670)
+
 
 This error indicates that your Azure subscription is not registered with the Microsoft Playwright Testing resource provider. To resolve this issue, please follow the steps outlined in the [Register Microsoft Playwright Testing resource provider for your subscription](./onboard-subscription.md#register-microsoft-playwright-testing-resource-provider-for-your-subscription) guide. 
 
