@@ -1,10 +1,10 @@
 # Get Started Sample 
 
-This sample makes use of a very simple end to end test to showcase the performance benefits of running highly parallelized, long-running tests with Playwright Service. 
+This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers.
 
-Follow the [quickstart](../../docs/quickstart.md) if you haven't created a workspace or set up your subscription for access to the private preview.
+If you have not yet created a workspace or configured your subscription for access to the private preview, please follow the [quickstart](../../docs/quickstart.md) guide.
 
-## Set up sample
+## Sample setup
 1. Clone this sample:
     ```bash
     git clone https://github.com/microsoft/playwright-testing-service
@@ -28,11 +28,11 @@ Follow the [quickstart](../../docs/quickstart.md) if you haven't created a works
 
 1. Edit `playwright.service.config.ts` to customize Playwright Service connection.
 
-## Run sample tests with Playwright Service
+## Run tests
 
 ```bash
 # You can run up to 50 parallel workers with Playwright Service
-npx playwright test -c playwright.service.config.ts --workers=20
+npx playwright test --config=playwright.service.config.ts --workers=20
 ```
 
 ## Run tests in a GitHub workflow
