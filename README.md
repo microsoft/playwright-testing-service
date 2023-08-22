@@ -1,4 +1,4 @@
-# Microsoft Playwright Testing Private preview
+# Microsoft Playwright Testing private preview
 
 Microsoft Playwright Testing service can speed up [Playwright](https://playwright.dev) test execution by increasing parallelism at cloud scale. The service is kept up-to-date with every new Playwright release, ensuring that you can run Playwright tests on a wide range of OS-browser combinations.
 
