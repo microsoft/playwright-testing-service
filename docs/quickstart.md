@@ -17,6 +17,8 @@ While we're in private preview, you'll need to follow a few one-off steps in thi
 
 1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) using your Azure account credentials. You may want to bookmark the website.
 
+1. You might get "No subscriptions found.", even if you enabled the Playwright Resource provider [here](./onboard-subscription.md), thats most likely because you have the wrong Directory selected. To change the Directory, click on your user account profile at the top right and select, "Switch Directory".
+
 1. Create the Workspace.
   ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/7ce589a1-9e77-4dd1-b0d6-d3164a4336fa)
 
