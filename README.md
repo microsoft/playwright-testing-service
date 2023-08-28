@@ -19,7 +19,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. Create the Workspace.
 
-  ![Create new workspace](./docs/media/quickstart/create-new-workspace.png)
+    ![Create new workspace](./docs/media/quickstart/create-new-workspace.png)
 
     |Field  |Description  |
     |---------|---------|
@@ -123,7 +123,7 @@ Run Playwright tests against browsers managed by the service using the configura
 npx playwright test --config=playwright.service.config.ts --workers=20
 ```
 
-# Next Steps
+## Next steps
 
 - Experiment with different levels of parallelism. Learn more about how [parallelism](./docs/concept-understanding-parallelism.md) works with Playwright.
 
