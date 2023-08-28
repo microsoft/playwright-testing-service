@@ -19,7 +19,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. Create the Workspace.
 
-    ![Create new workspace](./docs/media/quickstart/create-new-workspace.png)
+    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/1908215/379dee60-52f9-4ae0-8915-c34816d3538a)
 
     |Field  |Description  |
     |---------|---------|
@@ -34,7 +34,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate key** to create the access key.
 
-    ![Generate Access key](./docs/media/quickstart/Generate-access-key.png)
+    ![Generate Access key](https://github.com/microsoft/playwright-testing-service/assets/1908215/0d0599d5-3e76-42cc-8875-4303a4b5fae0)
 
 1. Copy the access key.
 
@@ -45,7 +45,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
 
-    ![Set workspace endpoint](./docs/media/quickstart/set-workspace-endpoint.png)
+    ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/1908215/1c095f72-a735-4aea-bdd1-d472afe80e84)
 
     The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace.
 
