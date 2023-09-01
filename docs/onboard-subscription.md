@@ -32,7 +32,7 @@ Perform the following steps to register the Microsoft Playwright Testing resourc
 
 1. Under **Settings**, select **Resource providers**.
 
-    ![screenshot to show selection of Resource provider](./media/onboarding-subscription/slect-resource-providers.png)
+    ![screenshot to show selection of Resource provider](./media/onboarding-subscription/select-resource-providers.png)
 
 1. In the **Resource providers** section, use the search bar to find *Microsoft.AzurePlaywrightService*.
 
