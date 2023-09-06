@@ -40,7 +40,8 @@ Perform the following steps to register the Microsoft Playwright Testing resourc
 
 1. Select **Microsoft.AzurePlaywrightService** from the provider list, and then select **Register**.
 
-    Make sure to select the latest API version from the list.
+    > [!NOTE]
+    > If your window is too small to display the **Register** button, close the "Resource Provider Details" pane to reveal it.
 
     ![Screenshot for resource provider registration](./media/onboarding-subscription/select-register.png)
 
