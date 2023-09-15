@@ -10,8 +10,17 @@ assignees: vvs11
 ## Quota Increase Request
 
 **Quota to Increase:**
+ 
 
-[Specify which quota you would like to increase (e.g., Maximum worker limit for the workspace, Number of workspaces in a subscription, Throttling limits etc. .]
+[Specify which quota you would like to increase]
+
+
+* [ ] Maximum number of workers for the workspace
+* [ ] Maximum number of workspaces per subscription
+* [ ] Throttling limits
+* [ ] Other
+
+ 
 
 **Business Justification:**
 
