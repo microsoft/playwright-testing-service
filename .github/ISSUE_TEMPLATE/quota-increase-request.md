@@ -7,7 +7,7 @@ assignees: vvs11
 
 ---
 
-## Quota Extension Request
+## Quota Increase Request
 
 **Quota to Increase:**
 
