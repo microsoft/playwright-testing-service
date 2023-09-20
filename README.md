@@ -30,13 +30,13 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
   > [!NOTE]
   > If you don't see this screen, select an existing workspace and go to the next section.
 
-## Generate Access Key
+## Generate Access Token
 
-1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate key** to create the access key.
+1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate token** to create the access token.
 
-    ![Generate Access key](https://github.com/microsoft/playwright-testing-service/assets/1908215/0d0599d5-3e76-42cc-8875-4303a4b5fae0)
+    ![Generate Access token](https://github.com/microsoft/playwright-testing-service/assets/4140290/1d133717-9433-476b-927c-d4ffa3ce48dd)
 
-1. Copy the access key.
+1. Copy the access token.
 
 ## Obtain region endpoint
 
