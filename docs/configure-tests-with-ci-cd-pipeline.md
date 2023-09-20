@@ -39,7 +39,7 @@ To run Playwright tests with Microsoft Playwright Testing in an Azure Pipelines 
 
 1. Set up a Microsoft Playwright Testing access token in your Azure Pipelines workflow:
 
-    * If you haven't already, generate an access token from the [Playwright portal](https://aka.ms/mpt/portal). This is the same step as [Create an Access Key](./quickstart.md#create-an-access-key) in the Quickstart.
+    * If you haven't already, generate an access token from the [Playwright portal](https://aka.ms/mpt/portal). This is the same step as [Create an Access Token](./quickstart.md#generate-access-token) in the Quickstart.
 
     * Navigate to the Azure pipeline where you want to integrate Microsoft Playwright Testing. Go to **Edit** > **Variables**.
 
