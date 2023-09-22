@@ -8,7 +8,7 @@ We are working on adding more regions to improve performance. If you have a spec
 
 ## Tests are failing with 401 error
 
-Your access token may be invalid or expired. Make sure you are using the correct access token. You can generate a new access token from the home page of your workspace. 
+Your access token may be invalid or expired. Make sure you are using the correct access token. You can generate a new access token in the **Settings** page of your workspace.
 
 ## Tests are failing because of timeout
 
