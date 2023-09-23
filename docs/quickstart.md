@@ -54,7 +54,7 @@ While we're in private preview, you'll need to follow a few one-off steps in thi
 
 ## Set up environment
 
-Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_KEY` and `PLAYWRIGHT_SERVICE_URL` that you obtained in previous steps are available in your environment.
+Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` and `PLAYWRIGHT_SERVICE_URL` that you obtained in previous steps are available in your environment.
 
 We recommend using `dotenv` module to manage your environment. With `dotenv` you'll be using the `.env` file to define your environment variables.
 
@@ -67,7 +67,7 @@ npm i --save-dev dotenv
 
 `.env` file
 ```
-PLAYWRIGHT_SERVICE_ACCESS_KEY=eyJh...
+PLAYWRIGHT_SERVICE_ACCESS_TOKEN=eyJh...
 PLAYWRIGHT_SERVICE_URL=wss://westus3.api.playwright-int.io/api/authorize/connectSession
 ```
 
@@ -102,7 +102,7 @@ export default defineConfig(config, {
       })}`,
       timeout: 30000,
       headers: {
-        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY!
+        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN!
       },
       // Allow service to access the localhost.
       exposeNetwork: '<loopback>'

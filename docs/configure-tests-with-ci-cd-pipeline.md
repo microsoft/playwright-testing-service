@@ -10,7 +10,7 @@ To run Playwright tests with Microsoft Playwright Testing in a GitHub Actions wo
         
     * Navigate to the GitHub repository where you want to integrate Microsoft Playwright Testing. Go to **Settings** -> **Secrets** -> **Actions**, and click **New Repository secret**. 
 
-    * Create a secret named `PLAYWRIGHT_SERVICE_ACCESS_KEY` and paste the access token in the **Value** field.
+    * Create a secret named `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` and paste the access token in the **Value** field.
 
         ![Screenshot of creating a new GitHub repository secret](./media/configure-tests-with-ci-cd-pipeline/create-action-secret.png)
 
@@ -23,7 +23,7 @@ To run Playwright tests with Microsoft Playwright Testing in a GitHub Actions wo
     ...
     - name: Run Playwright tests
       env:
-        PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_KEY }}
+        PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
         PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
         PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
       run: npx playwright test -c playwright.service.config.ts --workers=20
@@ -45,7 +45,7 @@ To run Playwright tests with Microsoft Playwright Testing in an Azure Pipelines 
 
         ![Screenshot of creating a new Azure Pipelines secret variable](./media/configure-tests-with-ci-cd-pipeline/create-pipelines-variable.png)
 
-    * Select **+** to create a new variable, named `PLAYWRIGHT_SERVICE_ACCESS_KEY` and paste the access token in the **Value** field. Make sure to select **Keep this value secret**.
+    * Select **+** to create a new variable, named `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` and paste the access token in the **Value** field. Make sure to select **Keep this value secret**.
 
 1. Similarly, create a `PLAYWRIGHT_SERVICE_URL` secret variable for your workspace's region endpoint. To learn how to obtain your workspace's region endpoint, refer to the [Add region endpoint in your setup](./quickstart.md#add-region-endpoint-in-your-set-up) step in the Quickstart.
 
@@ -57,7 +57,7 @@ To run Playwright tests with Microsoft Playwright Testing in an Azure Pipelines 
       enabled: true
       displayName: "Run Playwright tests"
       env:
-        PLAYWRIGHT_SERVICE_ACCESS_KEY: $(PLAYWRIGHT_SERVICE_ACCESS_KEY)
+        PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(PLAYWRIGHT_SERVICE_ACCESS_TOKEN)
         PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
         PLAYWRIGHT_SERVICE_RUN_ID: $(Build.BuildId)-$(Build.Attempt)-$(Build.SourceVersion)
       inputs:
