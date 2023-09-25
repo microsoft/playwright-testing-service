@@ -32,7 +32,7 @@ steps:
   enabled: true
   displayName: "Run Playwright tests"
   env:
-    PLAYWRIGHT_SERVICE_ACCESS_KEY: $(Secret)
+    PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(Secret)
   inputs:
     targetType: 'inline'
     script: 'npx playwright test -c playwright.service.config.ts --workers=20'

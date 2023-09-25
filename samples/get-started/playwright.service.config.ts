@@ -10,12 +10,12 @@ import dotenv from 'dotenv';
 
 // Define environment on the dev box in .env file:
 //  .env:
-//    PLAYWRIGHT_SERVICE_ACCESS_KEY=XXX
+//    PLAYWRIGHT_SERVICE_ACCESS_TOKEN=XXX
 //    PLAYWRIGHT_SERVICE_URL=XXX
 
 // Define environment in your GitHub workflow spec.
 //  env:
-//    PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_KEY }}
+//    PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
 //    PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
 //    PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
 
@@ -41,7 +41,7 @@ export default defineConfig(config, {
       })}`,
       timeout: 30000,
       headers: {
-        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY!
+        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN!
       },
       // Allow service to access the localhost.
       exposeNetwork: '<loopback>'
