@@ -37,4 +37,4 @@ npx playwright test --config=playwright.service.config.ts --workers=20
 
 ## Run tests in a GitHub workflow
 1. Copy the file [get-started.yaml](.github/workflows/get-started.yml) to your repository's `.github/workflows` directory. 
-1. Then follow the instructions in the article [Configure Playwright Service in a CI/CD pipeline](../../docs/configure-tests-with-ci-cd-pipeline.md).
+1. Then follow the instructions in the article [Configure Playwright Service in a CI/CD pipeline](https://aka.ms/mpt/configure-pipeline).
