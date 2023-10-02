@@ -38,7 +38,7 @@ Follow these steps to run your existing Playwright test suite with the service.
     |Field  |Description  |
     |---------|---------|
     |**Workspace Name** | A unique name to identify your workspace.<BR>The name can't contain special characters or whitespace. |
-    |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./docs/onboard-subscription.md). |
+    |**Azure Subscription** | Select an Azure subscription where you want to create the workspace. |
     |**Region** | This is where test run data will be stored for your workspace. |
 
   > [!NOTE]
