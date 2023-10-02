@@ -12,11 +12,11 @@ https://github.com/microsoft/playwright-testing-service/assets/12104064/23d626d3
 
 ## Documentation 
 
-Microsoft Playwright Testing's detailed documentation is available for your reference. Please explore it to learn more about the service:
+Microsoft Playwright Testing's detailed documentation is available on Microsoft Learn, here:  
 
-- [Microsoft Playwright Testing Documentation](https://aka.ms/mpt/docs)
+- [Microsoft Playwright Testing Documentation](https://aka.ms/mpt/docs). 
 
-This documentation covers various aspects of the service, including setup instructions, and detailed explanations of features and functionality. It's a valuable resource to help you get started and make the most out of the service.
+Please explore it to learn more about the service. It covers various aspects of the service, including setup instructions, and detailed explanations of features and functionality. It's a valuable resource to help you get started and make the most out of the service.
 
 
 ## Set up your Playwright project to run with Microsoft Playwright Testing
