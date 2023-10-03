@@ -54,9 +54,6 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 ### Obtain region endpoint
 
-> [!NOTE]
-> This is a temporary step during the private preview.
-
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
 
     ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/1908215/1c095f72-a735-4aea-bdd1-d472afe80e84)
