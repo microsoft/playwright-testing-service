@@ -2,38 +2,36 @@
 
 Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
 
-- To explore the numerous features offered by the service, read the [announcement](https://aka.ms/mpt/announce).
+- For an overview of features, read the [announcement](https://aka.ms/mpt/announce).
 
-- To know more about Microsoft Playwright Testing, visit our [product page](https://aka.ms/MPT/About).
-
+- To learn more about how to use Microsoft Playwright Testing, visit our [documentation](https://aka.ms/mpt/docs).
 
 
 https://github.com/microsoft/playwright-testing-service/assets/12104064/23d626d3-c4f9-4dbe-a4b1-c4736b703b49
 
-## Documentation 
+## Useful Links
+- [Quickstart: Run end-to-end tests at scale](https://aka.ms/mpt/quickstart)
+- [Quickstart: Set up continuous end-to-end testing across different browsers and operating systems](https://aka.ms/mpt/ci)
+- [Explore features and benefits](https://aka.ms/mpt/about)
+- [Documentation](https://aka.ms/mpt/docs) 
+- [Pricing](https://aka.ms/mpt/pricing)
+- [Share feedback](https://aka.ms/mpt/feedback)
 
-Microsoft Playwright Testing's detailed documentation is available on Microsoft Learn, here:  
-
-- [Microsoft Playwright Testing Documentation](https://aka.ms/mpt/docs). 
-
-Please explore it to learn more about the service. It covers various aspects of the service, including setup instructions, and detailed explanations of features and functionality. It's a valuable resource to help you get started and make the most out of the service.
-
-
-## Set up your Playwright project to run with Microsoft Playwright Testing
+## Get Started
 Follow these steps to run your existing Playwright test suite with the service.
 
 ### Prerequisites
 
 - An Azure account with an active subscription. If you don't have an Azure subscription, [create a free account](https://aka.ms/mpt/create-azure-subscription) before you begin.
-- Your Azure account needs the [Owner](https://review.learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner), [Contributor](https://review.learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), or one of the [classic administrator roles](https://review.learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles).
+- Your Azure account must be assigned the [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner), [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), or one of the [classic administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles).
 
 ### Create a Workspace
 
-1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) using your Azure account credentials. You may want to bookmark the website.
+1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) with your Azure account.
 
 1. Create the Workspace.
 
-    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/1908215/379dee60-52f9-4ae0-8915-c34816d3538a)
+    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/02539e53-51b9-42fc-952b-0dfface5ee0c)
 
     |Field  |Description  |
     |---------|---------|
