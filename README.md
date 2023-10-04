@@ -4,8 +4,7 @@ Microsoft Playwright Testing is a fully managed service that uses the cloud to e
 
 Ready to get started? Jump into our [quickstart guide](#get-started)!
 
-
-https://github.com/microsoft/playwright-testing-service/assets/12104064/23d626d3-c4f9-4dbe-a4b1-c4736b703b49
+https://github.com/microsoft/playwright-testing-service/assets/12104064/29b969ec-7106-4407-a34a-4f04756d16f7
 
 ## Useful Links
 - [Quickstart: Run end-to-end tests at scale](https://aka.ms/mpt/quickstart)
