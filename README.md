@@ -2,9 +2,7 @@
 
 Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
 
-- Explore its features in the [announcement](https://aka.ms/mpt/announce).
-
-- Ready to get started? Jump into our [quickstart guide](#get-started)!
+Ready to get started? Jump into our [quickstart guide](#get-started)!
 
 
 https://github.com/microsoft/playwright-testing-service/assets/12104064/23d626d3-c4f9-4dbe-a4b1-c4736b703b49
