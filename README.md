@@ -1,36 +1,48 @@
-# Microsoft Playwright Testing private preview
+# Microsoft Playwright Testing preview
 
-Microsoft Playwright Testing service can speed up [Playwright](https://playwright.dev) test execution by increasing parallelism at cloud scale. The service is kept up-to-date with every new Playwright release, ensuring that you can run Playwright tests on a wide range of OS-browser combinations.
+Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
+
+- Explore its features in the [announcement](https://aka.ms/mpt/announce).
+
+- Ready to get started? Jump into our [quickstart guide](#get-started)!
+
 
 https://github.com/microsoft/playwright-testing-service/assets/12104064/23d626d3-c4f9-4dbe-a4b1-c4736b703b49
 
-# How to start
+## Useful Links
+- [Quickstart: Run end-to-end tests at scale](https://aka.ms/mpt/quickstart)
+- [Quickstart: Set up continuous end-to-end testing across different browsers and operating systems](https://aka.ms/mpt/ci)
+- [Explore features and benefits](https://aka.ms/mpt/about)
+- [Documentation](https://aka.ms/mpt/docs) 
+- [Pricing](https://aka.ms/mpt/pricing)
+- [Share feedback](https://aka.ms/mpt/feedback)
 
-> [!NOTE]
-> We're still building the service and we understand that the process might still be a bit rough around the edges, or that some of the steps may be unfamiliar. Feel free to [reach out to us](https://aka.ms/mpt/feedback) if you encounter any challenges or have any questions.
+## Get Started
+Follow these steps to run your existing Playwright test suite with the service.
 
-## Confirm access to the private preview
+### Prerequisites
 
-While we're in private preview, you'll need to temporarily follow a few one-off steps in this guide: [Enable your Azure subscription for Microsoft Playwright Testing](./docs/onboard-subscription.md)
+- An Azure account with an active subscription. If you don't have an Azure subscription, [create a free account](https://aka.ms/mpt/create-azure-subscription) before you begin.
+- Your Azure account must be assigned the [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner), [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), or one of the [classic administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles).
 
-## Create a Workspace
+### Create a Workspace
 
-1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) using your Azure account credentials. You may want to bookmark the website.
+1. Sign in to the [Playwright portal](https://aka.ms/mpt/portal) with your Azure account.
 
 1. Create the Workspace.
 
-    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/1908215/379dee60-52f9-4ae0-8915-c34816d3538a)
+    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/02539e53-51b9-42fc-952b-0dfface5ee0c)
 
     |Field  |Description  |
     |---------|---------|
     |**Workspace Name** | A unique name to identify your workspace.<BR>The name can't contain special characters or whitespace. |
-    |**Azure Subscription** | Select an Azure subscription. If you don't see anything in the drop-down, you need to [onboard an Azure subscription to the private preview](./docs/onboard-subscription.md). |
+    |**Azure Subscription** | Select an Azure subscription where you want to create the workspace. |
     |**Region** | This is where test run data will be stored for your workspace. |
 
   > [!NOTE]
   > If you don't see this screen, select an existing workspace and go to the next section.
 
-## Generate Access Token
+### Generate Access Token
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate token** to create the access token.
 
@@ -38,10 +50,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
 1. Copy the access token.
 
-## Obtain region endpoint
-
-> [!NOTE]
-> This is a temporary step during the private preview.
+### Obtain region endpoint
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
 
@@ -49,7 +58,7 @@ While we're in private preview, you'll need to temporarily follow a few one-off 
 
     The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace.
 
-## Set up environment
+### Set up environment
 
 Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` and `PLAYWRIGHT_SERVICE_URL` that you obtained in previous steps are available in your environment.
 
@@ -68,7 +77,7 @@ PLAYWRIGHT_SERVICE_ACCESS_TOKEN=eyJh...
 PLAYWRIGHT_SERVICE_URL=wss://westus3.api.playwright-int.io/api/authorize/connectSession
 ```
 
-## Add service configuration
+### Add service configuration
 
 Add the service configuration to your project in the same location as your existing Playwright config file. Use [playwright.service.config.ts](https://aka.ms/mpt/service-config) as a starting point:
 
@@ -137,7 +146,7 @@ The service configuration serves to:
 > [!NOTE]
 > Make sure your project uses @playwright/test version 1.37 or above.
 
-## Run the tests
+### Run the tests
 
 Run Playwright tests against browsers managed by the service using the configuration you created above.
 
@@ -146,14 +155,12 @@ npx playwright test --config=playwright.service.config.ts --workers=20
 ```
 
 ## Next steps
+- Run tests in a [CI/CD pipeline.](https://aka.ms/mpt/configure-pipeline)
 
-- Experiment with different levels of parallelism. Learn more about how [parallelism](./docs/concept-understanding-parallelism.md) works with Playwright.
+- Learn how to [manage access](https://aka.ms/mpt/manage-access) to the created workspace.
 
-- Run tests in a [CI/CD pipeline.](./docs/configure-tests-with-ci-cd-pipeline.md)
+- Experiment with different number of workers to [determine the optimal configuration of your test suite](https://aka.ms/mpt/optimial-configuration).
 
-- Learn how to [manage access](./docs/how-to-assign-roles.md) to the created workspace.
-
-- Explore [troubleshooting guide](./docs/troubleshooting.md) and [known issues](./docs/known-issues.md).
 
 ## Contributing
 
