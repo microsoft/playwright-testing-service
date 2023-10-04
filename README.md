@@ -156,7 +156,7 @@ npx playwright test --config=playwright.service.config.ts --workers=20
 
 - Learn how to [manage access](https://aka.ms/mpt/manage-access) to the created workspace.
 
-- Experiment with different number of workers to [determine the optimal configuration of your test suite](https://aka.ms/mpt/optimial-configuration).
+- Experiment with different number of workers to [determine the optimal configuration of your test suite](https://aka.ms/mpt/parallelism).
 
 
 ## Contributing
