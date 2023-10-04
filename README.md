@@ -28,7 +28,7 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 1. Create the Workspace.
 
-    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/02539e53-51b9-42fc-952b-0dfface5ee0c)
+    ![Create new workspace](https://github.com/microsoft/playwright-testing-service/assets/12104064/d571e86b-9d43-48ac-a2b7-63afb9bb86a8)
 
     |Field  |Description  |
     |---------|---------|
@@ -43,7 +43,7 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate token** to create the access token.
 
-    ![Generate Access token](https://github.com/microsoft/playwright-testing-service/assets/4140290/1d133717-9433-476b-927c-d4ffa3ce48dd)
+    ![Generate access token](https://github.com/microsoft/playwright-testing-service/assets/12104064/2368ad52-d919-4c8a-b916-bdfddbd7a396)
 
 1. Copy the access token.
 
@@ -51,7 +51,7 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up**.
 
-    ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/1908215/1c095f72-a735-4aea-bdd1-d472afe80e84)
+    ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/12104064/d81ca629-2b23-4d34-8b70-67b6f7061a83)
 
     The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace.
 
