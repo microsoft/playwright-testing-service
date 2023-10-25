@@ -1,0 +1,21 @@
+trigger:
+  - main
+
+pool:
+  vmImage: windows-latest
+
+steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: sdk
+      version: "7.0.x"
+    displayName: "Use .NET SDK"
+
+  - script: dotnet publish PlaywrightTests/PlaywrightTests.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)/PlaywrightTests/ --
+    displayName: 'dotnet publish'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: "$(Build.ArtifactStagingDirectory)"
+      artifactName: "PlaywrightTests"
+    displayName: "Publish test binaries as artifact to use in Release pipeline"
