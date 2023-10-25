@@ -43,9 +43,8 @@ If you have not yet created a workspace or configured your subscription,  please
 
 ## Run tests
 
-Run Playwright tests against browsers managed by the service using the configuration you created above.
+Run Playwright tests against browsers managed by the service using the configuration you created above. You can run up to 50 parallel workers with the service
 ```bash
-# You can run up to 50 parallel workers with Playwright Testing service
     dotnet test -- NUnit.NumberOfTestWorkers=20
 ```
 
