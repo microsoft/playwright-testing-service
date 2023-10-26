@@ -2,7 +2,7 @@
 
 This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers.
 
-If you have not yet created a workspace or configured your subscription for access to the private preview, please follow the [quickstart](../../docs/quickstart.md) guide.
+If you have not yet created a workspace, please follow the [Get Started guide](../../../README.md#get-started)
 
 ## Sample setup
 1. Clone this sample:
@@ -30,8 +30,9 @@ If you have not yet created a workspace or configured your subscription for acce
 
 ## Run tests
 
+Run Playwright tests against browsers managed by the service using the configuration you created above. You can run up to 50 parallel workers with the service
+
 ```bash
-# You can run up to 50 parallel workers with Playwright Service
 npx playwright test --config=playwright.service.config.ts --workers=20
 ```
 
