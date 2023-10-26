@@ -29,13 +29,13 @@ public class Tests : BrowserTest
         await using var browser = await Playwright.Chromium.LaunchAsync();
         await using var context = await browser.NewContextAsync();
 
-        // Start tracing.
-        await context.Tracing.StartAsync(new()
-        {
-            Screenshots = true,
-            Snapshots = true,
-            Sources = true
-        });
+        // // Start tracing.
+        // await context.Tracing.StartAsync(new()
+        // {
+        //     Screenshots = true,
+        //     Snapshots = true,
+        //     Sources = true
+        // });
         
         var page = await context.NewPageAsync();
         await page.GotoAsync("https://playwright.dev");
@@ -55,10 +55,10 @@ public class Tests : BrowserTest
         // Expects the URL to contain intro.
         await Expect(page).ToHaveURLAsync(new Regex(".*intro"));
         
-        // Stop tracing and export it into a zip archive.
-        await context.Tracing.StopAsync(new()
-        {
-            Path = "trace"+iteration.ToString()+".zip"
-        });
+        // // Stop tracing and export it into a zip archive.
+        // await context.Tracing.StopAsync(new()
+        // {
+        //     Path = "trace"+iteration.ToString()+".zip"
+        // });
     }
 }
