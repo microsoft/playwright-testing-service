@@ -1,8 +1,8 @@
-# Get Started Sample 
+# Scale Playwright .NET tests with Microsoft Playwright Testing (Experimental)
 
-This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers.
+This sample demonstrates how to run Playwright .NET tests at scale using Microsoft Playwright Testing. It showcases the benefits of accelerating test suite completion by leveraging more parallel cloud browsers. The tests are executed using popular .NET test runners, specifically NUnit or MSTest.
 
-If you have not yet created a workspace or configured your subscription,  please follow the [ReadMe](../../../README.md).
+If you have not yet created a workspace or configured your subscription, please follow the [Get Started guide](../../../README.md#get-started).
 
 ## Sample setup
 1. Clone this sample:
