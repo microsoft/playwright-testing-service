@@ -2,6 +2,7 @@
   <!-- MSTest adapter -->  
   <MSTest>
     <Parallelize>
+    <!--Number of workers can go up to 50 for a workspace-->
       <Workers>20</Workers>
       <Scope>MethodLevel</Scope>
     </Parallelize>
@@ -10,7 +11,7 @@
   <RunConfiguration>
     <EnvironmentVariables>
       <!-- For debugging selectors, it's recommend to set the following environment variable -->
-      <DEBUG>pw:browser*</DEBUG>
+      <!--DEBUG>pw:browser*</DEBUG-->
     </EnvironmentVariables>
   </RunConfiguration>
   <!-- Playwright -->  
@@ -18,7 +19,7 @@
     <BrowserName>chromium</BrowserName>
     <ExpectTimeout>5000</ExpectTimeout>
     <LaunchOptions>
-      <Headless>false</Headless>
+      <Headless>true</Headless>
       <Channel>msedge</Channel>
     </LaunchOptions>
   </Playwright>
