@@ -20,7 +20,7 @@
     <ExpectTimeout>5000</ExpectTimeout>
     <LaunchOptions>
       <Headless>true</Headless>
-      <Channel>msedge</Channel>
+      <!--Channel>msedge</Channel-->
     </LaunchOptions>
   </Playwright>
 </RunSettings>
