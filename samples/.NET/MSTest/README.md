@@ -35,6 +35,8 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
     ```powershell
     $env:PLAYWRIGHT_SERVICE_ACCESS_KEY= # Paste Access Token value from previous step
     ```
+    NOTE: The name of this environment variable will be changed to PLAYWRIGHT_SERVICE_ACCESS_TOKEN with the next Playwright release. You can refer to this [PR](https://github.com/microsoft/playwright-dotnet/pull/2745).
+
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
     ```powershell
     $env:PLAYWRIGHT_SERVICE_URL= # Paste region endpoint URL
@@ -47,6 +49,7 @@ Run Playwright tests against browsers managed by the service using the configura
 ```powershell
 dotnet test --settings:.runsettings -- MSTest.Parallelize.Workers=10
 ```
+Note that by default MSTest will run all classes in parallel, while running tests inside each class sequentially (ExecutionScope.ClassLevel). You can adjust this behavior by using the following CLI parameter or using a .runsettings file as shown above. Running tests in parallel at the method level (ExecutionScope.MethodLevel) is not supported. Please refer to [Playwright documentation](https://playwright.dev/dotnet/docs/test-runners#running-mstest-tests-in-parallel).
 
 ## Add more configuration
 

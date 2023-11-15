@@ -7,27 +7,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PlaywrightTests;
 
 [TestClass]
-public class Tests : BrowserTest
+public class Tests : PageTest
 
 {
     [TestMethod]
-    [DataTestMethod]
-    [DataRow(1)]
-    [DataRow(2)]
-    [DataRow(3)]
-    [DataRow(4)]
-    [DataRow(5)]
-    [DataRow(6)]
-    [DataRow(7)]
-    [DataRow(8)]
-    [DataRow(9)]
-    [DataRow(10)]
-    public async Task HomepageHasPlaywrightInTitleAndGetStartedLinkLinkingtoTheIntroPage(int iteration)
+
+    public async Task HomepageHasPlaywrightInTitleAndGetStartedLinkLinkingtoTheIntroPage()
     {
         
-        
-        await using var browser = await Playwright.Chromium.LaunchAsync();
-        await using var context = await browser.NewContextAsync();
+       var context = await Browser.NewContextAsync();
 
         // // Start tracing.
         // await context.Tracing.StartAsync(new()
@@ -58,7 +46,7 @@ public class Tests : BrowserTest
         // // Stop tracing and export it into a zip archive.
         // await context.Tracing.StopAsync(new()
         // {
-        //     Path = "trace"+iteration.ToString()+".zip"
+        //      Path = "<Add absolute path>" + "trace.zip"
         // });
     }
 }

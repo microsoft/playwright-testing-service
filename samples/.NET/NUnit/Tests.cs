@@ -6,29 +6,17 @@ using NUnit.Framework;
 
 namespace PlaywrightTests;
 
-[Parallelizable(ParallelScope.All)]
+[Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class Tests : BrowserTest
+public class Tests : PageTest
 {
     [Test]
-    [TestCase(1, TestName = "Test Iteration 1")]
-    [TestCase(2, TestName = "Test Iteration 2")]
-    [TestCase(3, TestName = "Test Iteration 3")]
-    [TestCase(4, TestName = "Test Iteration 4")]
-    [TestCase(5, TestName = "Test Iteration 5")]
-    [TestCase(6, TestName = "Test Iteration 6")]
-    [TestCase(7, TestName = "Test Iteration 7")]
-    [TestCase(8, TestName = "Test Iteration 8")]
-    [TestCase(9, TestName = "Test Iteration 9")]
-    [TestCase(10, TestName = "Test Iteration 10")]
-   
-
-    public async Task HomepageHasPlaywrightInTitleAndGetStartedLinkLinkingtoTheIntroPage(int iteration)
+    public async Task HomepageHasPlaywrightInTitleAndGetStartedLinkLinkingtoTheIntroPage()
     {
-        await using var browser = await Playwright.Chromium.LaunchAsync();
-        await using var context = await browser.NewContextAsync();
+        
+        var context = await Browser.NewContextAsync();
 
-        //// Start tracing.
+        // //Start tracing.
         // await context.Tracing.StartAsync(new()
         // {
         //     Screenshots = true,
@@ -54,11 +42,12 @@ public class Tests : BrowserTest
         // Expects the URL to contain intro.
         await Expect(page).ToHaveURLAsync(new Regex(".*intro"));
 
-        // // Stop tracing and export it into a zip archive.
-        // await context.Tracing.StopAsync(new()
-        // {
-        //     Path = "trace"+iteration.ToString()+".zip"
-        // });
+    //    // Stop tracing and export it into a zip archive.
+    //     await context.Tracing.StopAsync(new()
+    //     {
+    //         Path = "<Add absolute path>" + "trace.zip"
+    //     });
 
     }
 }
+

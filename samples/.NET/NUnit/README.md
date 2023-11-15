@@ -35,6 +35,8 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
     ```powershell
     $env:PLAYWRIGHT_SERVICE_ACCESS_KEY= # Paste Access Token value from previous step
     ```
+    NOTE: The name of this environment variable will be changed to PLAYWRIGHT_SERVICE_ACCESS_TOKEN with the next Playwright release. You can refer to this [PR](https://github.com/microsoft/playwright-dotnet/pull/2745).
+
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
     ```powershell
     $env:PLAYWRIGHT_SERVICE_URL= # Paste region endpoint URL
@@ -47,6 +49,7 @@ Run Playwright tests against browsers managed by the service using the configura
 ```powershell
     dotnet test -- NUnit.NumberOfTestWorkers=20
 ```
+Note that by default NUnit will run all test files in parallel, while running tests inside each file sequentially (ParallelScope.Self). You can adjust this behavior using the NUnit.NumberOfTestWorkers parameter. Running test in parallel using ParallelScope.All or ParallelScope.Fixtures is not supported. Please refer to [Playwright documentation](https://playwright.dev/dotnet/docs/test-runners#running-nunit-tests-in-parallel). 
 
 ## Add more configuration
 
