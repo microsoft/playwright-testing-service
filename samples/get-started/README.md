@@ -2,7 +2,9 @@
 
 This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers.
 
+
 If you have not yet created a workspace, please follow the [Get Started guide](../../README.md#get-started)
+
 
 ## Sample setup
 1. Clone this sample:
