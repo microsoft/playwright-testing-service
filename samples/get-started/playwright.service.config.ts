@@ -54,5 +54,7 @@ export default defineConfig(config, {
       // Allow service to access the localhost.
       exposeNetwork: '<loopback>'
     }
-  }
+  },
+  // Tenmp workaround for config merge bug in OSS https://github.com/microsoft/playwright/pull/28224
+  projects: config.projects? config.projects : [{}]
 });
