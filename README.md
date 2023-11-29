@@ -10,6 +10,7 @@ https://github.com/microsoft/playwright-testing-service/assets/12104064/29b969ec
 - [Quickstart: Run end-to-end tests at scale](https://aka.ms/mpt/quickstart)
 - [Quickstart: Set up continuous end-to-end testing across different browsers and operating systems](https://aka.ms/mpt/ci)
 - [Explore features and benefits](https://aka.ms/mpt/about)
+- [View Microsoft Playwright Testing service demo](https://youtu.be/GenC1jAeTZE)
 - [Documentation](https://aka.ms/mpt/docs) 
 - [Pricing](https://aka.ms/mpt/pricing)
 - [Share feedback](https://aka.ms/mpt/feedback)
