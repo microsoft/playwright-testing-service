@@ -35,6 +35,7 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
     ```powershell
     $env:PLAYWRIGHT_SERVICE_ACCESS_TOKEN= # Paste Access Token value from previous step
     ```
+    NOTE: If you are using Playwright version 1.39, the name of this variable should be `PLAYWRIGHT_SERVICE_ACCESS_KEY`.
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
     ```powershell
