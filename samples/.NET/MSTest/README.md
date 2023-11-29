@@ -33,9 +33,9 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
 1. Set access token generated above as environment variable for your project: 
     ```powershell
-    $env:PLAYWRIGHT_SERVICE_ACCESS_KEY= # Paste Access Token value from previous step
+    $env:PLAYWRIGHT_SERVICE_ACCESS_TOKEN= # Paste Access Token value from previous step
     ```
-    NOTE: The name of this environment variable will be changed to PLAYWRIGHT_SERVICE_ACCESS_TOKEN with the next Playwright release. You can refer to this [PR](https://github.com/microsoft/playwright-dotnet/pull/2745).
+    NOTE: If you are using Playwright version 1.39, the name of this variable should be `PLAYWRIGHT_SERVICE_ACCESS_KEY`.
 
 1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
     ```powershell
