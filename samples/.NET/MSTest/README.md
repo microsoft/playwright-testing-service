@@ -2,6 +2,8 @@
 
 This sample demonstrates how to run Playwright .NET tests at scale using Microsoft Playwright Testing. It showcases the benefits of accelerating test suite completion by leveraging more parallel cloud browsers. The tests are executed using MSTest test runner.
 
+Note: Since service integration is done via [playwright NUnit base class](https://playwright.dev/dotnet/docs/test-runners) which uses BrowserService so it only works out of the box when you use one of the following base class BrowserTest, Page, ContextTest
+
 If you have not yet created a workspace, please follow the [Get Started guide](../../../README.md#get-started)
 
 ## Sample setup
