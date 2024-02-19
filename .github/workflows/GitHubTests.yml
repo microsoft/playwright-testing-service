@@ -32,3 +32,19 @@ jobs:
         name: playwright-report
         path: samples/get-started/playwright-report/
         retention-days: 10
+
+    - name: Comment on PR
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const issue_number = context.issue.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const body = "See test results [here](www.playwright.dev)";
+          github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number,
+            body
+          });
