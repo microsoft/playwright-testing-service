@@ -41,7 +41,7 @@ jobs:
           const issue_number = context.issue.number;
           const owner = context.repo.owner;
           const repo = context.repo.repo;
-          const body = 'See test results [here](www.playwright.dev)';
+          const body = 'See test results [here](https://playwright.dev)';
           github.rest.issues.createComment({
             owner,
             repo,
