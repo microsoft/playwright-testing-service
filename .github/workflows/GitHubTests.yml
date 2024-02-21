@@ -32,7 +32,8 @@ jobs:
         name: playwright-report
         path: samples/get-started/playwright-report/
         retention-days: 10
-
+    - name: Run custom script
+      run: ./run_playwright_tests.sh
     - name: Comment on PR
       uses: actions/github-script@v5
       if: always()
@@ -42,7 +43,7 @@ jobs:
           const issue_number = context.issue.number;
           const owner = context.repo.owner;
           const repo = context.repo.repo;
-          const body = 'See test results [here](https://playwright.dev)';
+          const body = 'See test results [here](${process.env.GENERATED_URL})';
           github.rest.issues.createComment({
             owner,
             repo,
