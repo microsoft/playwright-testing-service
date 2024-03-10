@@ -20,6 +20,7 @@ jobs:
       working-directory: samples/get-started
       run: npm ci
     - name: Install Playwright Browsers
+      working-directory: samples/get-started
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       working-directory: samples/get-started
