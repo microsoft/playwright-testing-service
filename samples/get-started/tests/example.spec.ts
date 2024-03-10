@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 // This sample simulates a larger test suite
-const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || "1");
+const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || "100");
 for (var i = 0; i < TEST_ITERATIONS; i++) {
 
   test('has title ' + i, async ({ page }) => {
@@ -20,8 +20,8 @@ for (var i = 0; i < TEST_ITERATIONS; i++) {
     // Expects the URL to contain intro.
     await expect(page).toHaveURL(/.*intro/);
     
-    const randomResult = Math.random();
-    expect(randomResult).toBeGreaterThan(0.5);
+    // const randomResult = Math.random();
+    // expect(randomResult).toBeGreaterThan(0.5);
   });
 
 }
