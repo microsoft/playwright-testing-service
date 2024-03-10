@@ -25,7 +25,7 @@ jobs:
         PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN}}
         PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
         PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
-      run: npx playwright test -c playwright.service.config.ts --workers=30
+      run: npx playwright test -c playwright.service.config.ts --workers=50
     - uses: actions/upload-artifact@v3
       if: always()
       with:
@@ -33,19 +33,19 @@ jobs:
         path: samples/get-started/playwright-report/
         retention-days: 10
 
-    - name: Comment on PR
-      uses: actions/github-script@v5
-      if: always()
-      with:
-        github-token: ${{secrets.GH_TOKEN_FOR_PR_COMMENTS}}
-        script: |
-          const issue_number = context.issue.number;
-          const owner = context.repo.owner;
-          const repo = context.repo.repo;
-          const body = 'See test results [here](https://playwright.dev)';
-          github.rest.issues.createComment({
-            owner,
-            repo,
-            issue_number,
-            body
-          });
+    # - name: Comment on PR
+    #   uses: actions/github-script@v5
+    #   if: always()
+    #   with:
+    #     github-token: ${{secrets.GH_TOKEN_FOR_PR_COMMENTS}}
+    #     script: |
+    #       const issue_number = context.issue.number;
+    #       const owner = context.repo.owner;
+    #       const repo = context.repo.repo;
+    #       const body = 'See test results [here](https://playwright.dev)';
+    #       github.rest.issues.createComment({
+    #         owner,
+    #         repo,
+    #         issue_number,
+    #         body
+    #       });
