@@ -23,6 +23,7 @@ jobs:
       working-directory: samples/get-started
       run: npx playwright install --with-deps
     - name: set up reporting
+      working-directory: samples/get-started
       run: |
         npm set //npm.pkg.github.com/:_authToken {{GITHUB_PAT_TOKEN}}
         npm install
