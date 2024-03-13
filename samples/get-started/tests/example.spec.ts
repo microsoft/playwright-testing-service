@@ -20,8 +20,8 @@ for (var i = 0; i < TEST_ITERATIONS; i++) {
     // Expects the URL to contain intro.
     await expect(page).toHaveURL(/.*intro/);
     
-    // const randomResult = Math.random();
-    // expect(randomResult).toBeGreaterThan(0.5);
+    const randomResult = Math.random();
+    expect(randomResult).toBeGreaterThan(0.4);
   });
 
 }
