@@ -12,5 +12,6 @@
   "devDependencies": {
     "@playwright/test": "^1.37",
     "dotenv": "^16.0.3"
+    "@microsoft/mpt-reporter": "0.1.1-alpha-8250785369-1.0"
   }
 }
