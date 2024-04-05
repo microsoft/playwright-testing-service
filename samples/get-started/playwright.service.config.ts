@@ -20,6 +20,19 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// assert MPT Service variables are defined.
+if (!process.env.PLAYWRIGHT_SERVICE_ACCESS_KEY) {
+  throw new Error('PLAYWRIGHT_SERVICE_ACCESS_KEY is not defined');
+}
+if (!process.env.PLAYWRIGHT_SERVICE_URL) {
+  throw new Error('PLAYWRIGHT_SERVICE_URL is not defined');
+}
+// assert @playwright/test version >= 1.37.0
+const playwrightTestVersion = require('@playwright/test/package.json').version;
+if (playwrightTestVersion < '1.37.0') {
+  throw new Error(`@playwright/test version ${playwrightTestVersion} is not supported. Please upgrade to 1.37.0 or higher.`);
+}
+
 // Name the test run if it's not named yet.
 process.env.PLAYWRIGHT_SERVICE_RUN_ID = process.env.PLAYWRIGHT_SERVICE_RUN_ID || new Date().toISOString();
 
@@ -58,3 +71,9 @@ export default defineConfig(config, {
   // Tenmp workaround for config merge bug in OSS https://github.com/microsoft/playwright/pull/28224
   projects: config.projects? config.projects : [{}]
 });
+
+// Assert that the serviceConfig has connectOptions defined.
+import serviceConfig from './playwright.service.config';
+if (!serviceConfig.use || !serviceConfig.use.connectOptions) {
+  throw new Error('connectOptions are not defined');
+}
