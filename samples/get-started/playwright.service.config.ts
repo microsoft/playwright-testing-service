@@ -41,7 +41,7 @@ export default defineConfig(config, {
   
   use: {
     // Specify the service endpoint.
-    connectOptions: {
+    connectOptions: process.env.ENABLE_MPT_SERVICE === '1' ? {
       wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
         // Can be 'linux' or 'windows'.
         os,
@@ -53,7 +53,7 @@ export default defineConfig(config, {
       },
       // Allow service to access the localhost.
       exposeNetwork: '<loopback>'
-    }
+    }: undefined
   },
   // Tenmp workaround for config merge bug in OSS https://github.com/microsoft/playwright/pull/28224
   projects: config.projects? config.projects : [{}]
