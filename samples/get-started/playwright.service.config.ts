@@ -49,7 +49,8 @@ export default defineConfig(config, {
       })}`,
       timeout: 30000,
       headers: {
-        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN!
+        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN!,
+        'x-playwright-launch-options': JSON.stringify({ ignoreDefaultArgs: ['--enable-gpu'] })
       },
       // Allow service to access the localhost.
       exposeNetwork: '<loopback>'
