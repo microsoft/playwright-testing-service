@@ -16,13 +16,43 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
+    - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true) 
+      uses: azure/login@v2 
+      with: 
+        client-id: ${{ secrets.AZURE_CLIENT_ID }} 
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}  
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  
+        enable-AzPSSession: true 
+    - name: 'Get resource group with PowerShell action' 
+      uses: azure/powershell@v1 
+      with: 
+        inlineScript: | 
+          Get-AzResourceGroup 
+        azPSVersion: "latest" 
+    
     - name: Install dependencies
       working-directory: samples/get-started
       run: npm ci
+   
+    - name: install vsts 
+      working-directory: samples/get-started
+      run: npm install -g vsts-npm-auth 
+
+    - name: Use .npmrc
+      working-directory: samples/get-started 
+      uses: bduff9/use-npmrc@v1.2 
+      with: 
+        dot-npmrc: ${{ secrets.DOT_NPMRC }} 
+    
+    - name: Install MPT package
+      working-directory: samples/get-started
+      run: |   
+        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
+        npm install @azure/microsoft-playwright-testing 
+
     - name: Run Playwright tests
       working-directory: samples/get-started
       env:
-        PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN}}
         PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
         PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
       run: npx playwright test -c playwright.service.config.ts --workers=30
