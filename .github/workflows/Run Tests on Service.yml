@@ -7,9 +7,6 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
-permissions:
-  id-token: write
-  contents: read
 jobs:
   test:
     timeout-minutes: 60
@@ -32,24 +29,24 @@ jobs:
         inlineScript: | 
           Get-AzResourceGroup 
         azPSVersion: "latest" 
-    
-    - name: Install dependencies
-      working-directory: samples/get-started
-      run: npm ci
-   
     - name: install vsts 
       working-directory: samples/get-started
       run: npm install -g vsts-npm-auth 
 
     - name: Use .npmrc
+      working-directory: samples/get-started 
       uses: bduff9/use-npmrc@v1.2 
       with: 
         dot-npmrc: ${{ secrets.DOT_NPMRC }} 
-    
+   
+    - name: Install dependencies
+      working-directory: samples/get-started
+      run: npm ci
+   
     - name: Install MPT package
       working-directory: samples/get-started
-      run: |
-        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/ 
+      run: |   
+        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
         npm install @azure/microsoft-playwright-testing 
 
     - name: Run Playwright tests
