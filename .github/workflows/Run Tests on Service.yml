@@ -45,7 +45,7 @@ jobs:
    
     - name: Install MPT package
       working-directory: samples/get-started
-      run: |   
+      run: |
         npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
         npm install @azure/microsoft-playwright-testing 
 
