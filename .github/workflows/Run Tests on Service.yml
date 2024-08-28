@@ -34,7 +34,6 @@ jobs:
       run: npm install -g vsts-npm-auth 
 
     - name: Use .npmrc
-      working-directory: samples/get-started 
       uses: bduff9/use-npmrc@v1.2 
       with: 
         dot-npmrc: ${{ secrets.DOT_NPMRC }} 
