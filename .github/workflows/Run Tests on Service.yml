@@ -43,7 +43,7 @@ jobs:
    
     - name: Install dependencies
       working-directory: samples/get-started
-      run: npm ci
+      run: npm install
    
     - name: Install MPT package
       working-directory: samples/get-started
