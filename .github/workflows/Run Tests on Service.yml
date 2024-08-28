@@ -39,15 +39,14 @@ jobs:
       run: npm install -g vsts-npm-auth 
 
     - name: Use .npmrc
-      working-directory: samples/get-started 
       uses: bduff9/use-npmrc@v1.2 
       with: 
         dot-npmrc: ${{ secrets.DOT_NPMRC }} 
     
     - name: Install MPT package
       working-directory: samples/get-started
-      run: |   
-        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
+      run: |
+        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/ 
         npm install @azure/microsoft-playwright-testing 
 
     - name: Run Playwright tests
