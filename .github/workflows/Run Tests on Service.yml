@@ -37,9 +37,18 @@ jobs:
       run: npm install -g vsts-npm-auth 
 
     - name: Use .npmrc
-      uses: bduff9/use-npmrc@v1.2 
-      with: 
-        dot-npmrc: ${{ secrets.DOT_NPMRC }} 
+      working-directory: samples/get-started
+      run: |
+        echo 'registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/' >> ~/.npmrc
+        echo 'always-auth=true' >> ~/.npmrc
+        echo '; begin auth token' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/:username=devdiv' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/:_password=${{ secrets.SID_AZ_CREDS }}' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/:email=a@a.com' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/:username=devdiv' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/:_password=${{ secrets.SID_AZ_CREDS }}' >> ~/.npmrc
+        echo '//devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/:email=a@a.com' >> ~/.npmrc
+        echo '; end auth token' >> ~/.npmrc       
    
     - name: Install dependencies
       working-directory: samples/get-started
@@ -48,7 +57,7 @@ jobs:
     - name: Install MPT package
       working-directory: samples/get-started
       run: |
-        npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
+        # npm config set registry=https://devdiv.pkgs.visualstudio.com/_packaging/psdt/npm/registry/; 
         npm install @azure/microsoft-playwright-testing 
 
     - name: Run Playwright tests
