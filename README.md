@@ -1,6 +1,6 @@
 # Microsoft Playwright Testing preview
 
-Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
+Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. Along with this, it enables you to publish test results and artifacts collected by Playwright to the service. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
 
 Ready to get started? Jump into our [quickstart guide](#get-started)!
 
@@ -10,7 +10,6 @@ https://github.com/microsoft/playwright-testing-service/assets/12104064/29b969ec
 - [Quickstart: Run end-to-end tests at scale](https://aka.ms/mpt/quickstart)
 - [Quickstart: Set up continuous end-to-end testing across different browsers and operating systems](https://aka.ms/mpt/ci)
 - [Explore features and benefits](https://aka.ms/mpt/about)
-- [View Microsoft Playwright Testing service demo](https://youtu.be/GenC1jAeTZE)
 - [Documentation](https://aka.ms/mpt/docs) 
 - [Pricing](https://aka.ms/mpt/pricing)
 - [Share feedback](https://aka.ms/mpt/feedback)
@@ -22,6 +21,8 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 - An Azure account with an active subscription. If you don't have an Azure subscription, [create a free account](https://aka.ms/mpt/create-azure-subscription) before you begin.
 - Your Azure account must be assigned the [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner), [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), or one of the [classic administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles).
+- A Playwright project. If you don't have one, you can clone this repository and navigate to samples/get-started.
+- Azure CLI. If you don't have Azure CLI, see [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ### Create a Workspace
 
@@ -40,13 +41,23 @@ Follow these steps to run your existing Playwright test suite with the service.
   > [!NOTE]
   > If you don't see this screen, select an existing workspace and go to the next section.
 
-### Generate Access Token
 
-1. In the [Playwright portal](https://aka.ms/mpt/portal), select **Generate token** to create the access token.
+### Install Microsoft Playwright Testing package 
 
-    ![Generate access token](https://github.com/microsoft/playwright-testing-service/assets/12104064/2368ad52-d919-4c8a-b916-bdfddbd7a396)
+To use the service, install Microsoft Playwright Testing package. 
 
-1. Copy the access token.
+```npm
+npm init @azure/microsoft-playwright-testing
+```
+If you already have a `playwright.service.config.ts` file, the package will ask you to override it. 
+
+The service configuration serves to:
+- Direct and authenticate Playwright to the Microsoft Playwright Testing service.
+- Adds a reporter to publish test results and artifacts.
+
+> [!NOTE]
+> Make sure your project uses @playwright/test version 1.47 or above.
+
 
 ### Obtain region endpoint
 
@@ -58,7 +69,7 @@ Follow these steps to run your existing Playwright test suite with the service.
 
 ### Set up environment
 
-Ensure that the `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` and `PLAYWRIGHT_SERVICE_URL` that you obtained in previous steps are available in your environment.
+Ensure that the `PLAYWRIGHT_SERVICE_URL` that you obtained in previous step is available in your environment.
 
 We recommend using `dotenv` module to manage your environment. With `dotenv` you'll be using the `.env` file to define your environment variables.
 
@@ -71,78 +82,19 @@ npm i --save-dev dotenv
 
 `.env` file
 ```
-PLAYWRIGHT_SERVICE_ACCESS_TOKEN=eyJh...
-PLAYWRIGHT_SERVICE_URL=wss://westus3.api.playwright-int.io/api/authorize/connectSession
+PLAYWRIGHT_SERVICE_URL={MY-REGION-ENDPOINT}
 ```
+Make sure to replace the `{MY-REGION-ENDPOINT}` text placeholder with the value you copied earlier.
 
-### Add service configuration
+### Sign in to Azure to run the tests 
 
-Add the service configuration to your project in the same location as your existing Playwright config file. Use [playwright.service.config.ts](https://aka.ms/mpt/service-config) as a starting point:
+To run your Playwright tests in your Microsoft Playwright Testing workspace, you need to authenticate the Playwright client where you are running the tests with the service. This could be your local dev machine or CI machine. To run tests from your local machine, you can use Azure CLI. Run this command to sign-in 
 
-```js
-// playwright.service.config.ts
-
-import { defineConfig } from '@playwright/test';
-import config from './playwright.config';
-import dotenv from 'dotenv';
-
-// Define environment on the dev box in .env file:
-//  .env:
-//    PLAYWRIGHT_SERVICE_ACCESS_KEY=XXX
-//    PLAYWRIGHT_SERVICE_URL=XXX
-
-// Define environment in your GitHub workflow spec.
-//  env:
-//    PLAYWRIGHT_SERVICE_ACCESS_KEY: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
-//    PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
-//    PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
-
-dotenv.config();
-
-// Name the test run if it's not named yet.
-process.env.PLAYWRIGHT_SERVICE_RUN_ID = process.env.PLAYWRIGHT_SERVICE_RUN_ID || new Date().toISOString();
-
-// Can be 'linux' or 'windows'.
-const os = process.env.PLAYWRIGHT_SERVICE_OS || 'linux';
-
-export default defineConfig(config, {
-  // Define more generous timeout for the service operation if necessary.
-  // timeout: 60000,
-  // expect: {
-  //   timeout: 10000,
-  // },
-  workers: 20,
-
-  // Enable screenshot testing and configure directory with expectations.
-  // https://learn.microsoft.com/azure/playwright-testing/how-to-configure-visual-comparisons
-  ignoreSnapshots: false,
-  snapshotPathTemplate: `{testDir}/__screenshots__/{testFilePath}/${os}/{arg}{ext}`,
-  
-  use: {
-    // Specify the service endpoint.
-    connectOptions: {
-      wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
-        // Can be 'linux' or 'windows'.
-        os,
-        runId: process.env.PLAYWRIGHT_SERVICE_RUN_ID
-      })}`,
-      timeout: 30000,
-      headers: {
-        'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN!
-      },
-      // Allow service to access the localhost.
-      exposeNetwork: '<loopback>'
-    }
-  }
-});
+```CLI
+az login
 ```
+**NOTE**: If you are a part of multiple Microsoft Entra tenants, make sure you sign-in to the tenant where your workspace belongs. You can get the tenant id from Azure portal, see [Find your Microaoft Entra Tenant](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant). Once you get the id, sign in using the command `az login --tenant <TenantID>`
 
-The service configuration serves to:
-- Direct and authenticate Playwright to the Microsoft Playwright Testing service.
-- Override timeouts for service operations, if needed.
-
-> [!NOTE]
-> Make sure your project uses @playwright/test version 1.37 or above.
 
 ### Run the tests
 
