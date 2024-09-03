@@ -27,21 +27,14 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}  
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  
         enable-AzPSSession: true 
-    - name: 'Get resource group with PowerShell action' 
-      uses: azure/powershell@v1 
-      with: 
-        inlineScript: | 
-          Get-AzResourceGroup 
-        azPSVersion: "latest" 
-   
+        
     - name: Install dependencies
       working-directory: samples/get-started
       run: npm install
    
     - name: Install MPT package
       working-directory: samples/get-started
-      run: |
-        npm install @azure/microsoft-playwright-testing 
+      run: npm install @azure/microsoft-playwright-testing 
 
     - name: Run Playwright tests
       working-directory: samples/get-started
