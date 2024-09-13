@@ -86,15 +86,35 @@ PLAYWRIGHT_SERVICE_URL={MY-REGION-ENDPOINT}
 ```
 Make sure to replace the `{MY-REGION-ENDPOINT}` text placeholder with the value you copied earlier.
 
-### Sign in to Azure to run the tests 
+### Set up Authentication
 
-To run your Playwright tests in your Microsoft Playwright Testing workspace, you need to authenticate the Playwright client where you are running the tests with the service. This could be your local dev machine or CI machine. To run tests from your local machine, you can use Azure CLI. Run this command to sign-in 
+To run your Playwright tests in your Microsoft Playwright Testing workspace, you need to authenticate the Playwright client where you are running the tests with the service. This could be your local dev machine or CI machine. 
+
+The service offers two authentication methods: Microsoft Entra ID and Access Tokens.
+
+Microsoft Entra ID uses your Azure credentials, requiring a sign-in to your Azure account for secure access. Alternatively, you can generate an access token from your Playwright workspace and use it in your setup.
+
+You can follow any one of the authentication methods below:
+
+#### Set up authtication using Microsoft Entra ID 
+
+Microsoft Entra ID is the default and recommended authentication for the service. From your local dev machine, you can use [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) to sign-in
 
 ```CLI
 az login
 ```
-**NOTE**: If you are a part of multiple Microsoft Entra tenants, make sure you sign-in to the tenant where your workspace belongs. You can get the tenant id from Azure portal, see [Find your Microaoft Entra Tenant](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant). Once you get the id, sign in using the command `az login --tenant <TenantID>`
 
+**NOTE**: If you are a part of multiple Microsoft Entra tenants, make sure you sign-in to the tenant where your workspace belongs. You can get the tenant id from Azure portal, see [Find your Microsoft Entra Tenant](https://learn.microsoft.com/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant). Once you get the ID, sign-in using the command `az login --tenant <TenantID>`
+
+#### Set up authentication using access tokens
+
+You can generate an access token from your Playwright Testing workspace and use it in your setup. However, we strongly recommend Microsoft Entra ID for authentication due to its enhanced security. Access tokens, while convenient, function like long-lived passwords and are more susceptible to being compromised.
+
+1. To use access token based authentication, [Enable access-token based authentication](https://aka.ms/mpt/authentication)
+
+2. [Set up authentication using access tokens](https://aka.ms/mpt/access-token)
+
+> We strongly recommend using Microsoft Entra ID for authentication to the service. If you are using access tokens, see [How to Manage Access Tokens](https://aka.ms/mpt/access-token)
 
 ### Run the tests
 
