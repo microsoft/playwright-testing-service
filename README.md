@@ -49,11 +49,12 @@ To use the service, install Microsoft Playwright Testing package.
 ```npm
 npm init @azure/microsoft-playwright-testing
 ```
-If you already have a `playwright.service.config.ts` file, the package will ask you to override it. 
+This generates `playwright.service.config.ts` file which serves to:
 
-The service configuration serves to:
 - Direct and authenticate Playwright to the Microsoft Playwright Testing service.
 - Adds a reporter to publish test results and artifacts.
+
+If you already have this file, the package asks you to override it. 
 
 > [!NOTE]
 > Make sure your project uses @playwright/test version 1.47 or above.
@@ -66,6 +67,9 @@ The service configuration serves to:
     ![Set workspace endpoint](https://github.com/microsoft/playwright-testing-service/assets/12104064/d81ca629-2b23-4d34-8b70-67b6f7061a83)
 
     The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace.
+
+    > [!NOTE]
+    > The region end point could be updated. Make sure you copy the latest value from [Playwright portal](https://aka.ms/mpt/portal) .
 
 ### Set up environment
 
