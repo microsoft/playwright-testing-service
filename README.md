@@ -68,8 +68,8 @@ If you already have this file, the package asks you to override it.
 
     The endpoint URL corresponds to the workspace region. You might see a different endpoint URL in the Playwright portal, depending on the region you selected when creating the workspace.
 
-    > [!NOTE]
-    > The region end point could be updated. Make sure you copy the latest value from [Playwright portal](https://aka.ms/mpt/portal) .
+> [!NOTE]
+> The region end point could be updated. Make sure you copy the latest value from [Playwright portal](https://aka.ms/mpt/portal) .
 
 ### Set up environment
 
