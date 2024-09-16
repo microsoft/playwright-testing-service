@@ -31,7 +31,8 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
     If pwsh is not available, you have to [install PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
-1. Open the [Playwright portal](https://aka.ms/mpt/portal) and generate an [Access Token](../../../README.md#generate-access-token).
+1. Set up Authentication using Access Tokens
+    Currently, only access tokens are supported for NUnit. See [Set up authentication using access tokens](../../../README.md#set-up-authentication-using-access-tokens)
 
 1. Set access token generated above as environment variable for your project: 
     ```powershell

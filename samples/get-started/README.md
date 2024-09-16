@@ -1,6 +1,6 @@
 # Get Started Sample 
 
-This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers.
+This sample uses a basic test to show how the service can speed up test suite completion with more parallel cloud browsers and publish test results and artifacts for easier troubleshooting.
 
 
 If you have not yet created a workspace, please follow the [Get Started guide](../../README.md#get-started)
@@ -18,17 +18,20 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
     npm install
     ```
 
-1. Open the [Playwright portal](https://aka.ms/mpt/portal) and generate an Access Token.
-1. Create a `.env` file in the sample's directory and define the following environment variable:
-    ```bash
-    PLAYWRIGHT_SERVICE_ACCESS_TOKEN= # Paste Access Token value from previous step
-    ```
-1. In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
-    ```bash
-    PLAYWRIGHT_SERVICE_URL= # Paste region endpoint URL
-    ```
+1. Set up Authentication 
 
-1. Edit `playwright.service.config.ts` to customize Playwright Service connection.
+    To run your Playwright tests in your Microsoft Playwright Testing workspace, you need to authenticate the Playwright client where you are running the tests with the service. This could be your local dev machine or CI machine. To run tests from your local machine, you can use Azure CLI. Run this command to sign-in 
+    
+    ```CLI
+    az login
+    ```
+    **NOTE**: If you are a part of multiple Microsoft Entra tenants, make sure you sign-in to the tenant where your workspace belongs. You can get the tenant id from Azure portal, see [Find your Microsoft Entra Tenant](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant). Once you get the id, sign in using the command `az login --tenant <TenantID>`
+
+1. Create a `.env` file in the sample's directory and define the following environment variable: 
+   In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
+        ```bash
+        PLAYWRIGHT_SERVICE_URL= # Paste region endpoint URL
+        ```
 
 ## Run tests
 
