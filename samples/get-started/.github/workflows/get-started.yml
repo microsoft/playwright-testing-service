@@ -19,7 +19,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-     # This step is to sign-in to Azure to run tests from GitHub Action workflow, https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-azure
+     # This step is to sign-in to Azure to run tests from GitHub Action workflow, see: https://learn.microsoft.com/azure/developer/github/connect-from-azure 
     - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
       uses: azure/login@v2 
       with: 
