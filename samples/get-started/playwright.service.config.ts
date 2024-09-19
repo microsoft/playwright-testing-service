@@ -6,10 +6,10 @@ import config from './playwright.config';
 export default defineConfig(
   config,
   getServiceConfig(config, {
-    exposeNetwork: '<loopback>',
-    timeout: 30000,
-    os: ServiceOS.LINUX,
-	useCloudHostedBrowsers: true
+	exposeNetwork: '<loopback>',
+    	timeout: 30000,
+   	os: ServiceOS.LINUX,
+    	useCloudHostedBrowsers: true
   }),
   {
     /* 
