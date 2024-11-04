@@ -6,7 +6,13 @@ Note: Since service integration is done via [playwright NUnit base class](https:
 
 If you have not yet created a workspace, please follow the [Get Started guide](../../../README.md#get-started)
 
-## Sample setup
+## MPT package integration
+
+TBD - Link to azure-sdk-for-net Readme
+
+
+## Legacy way (Without Package -  No Reporting )
+### Sample setup
 1. Clone this sample:
     ```powershell
     git clone https://github.com/microsoft/playwright-testing-service
@@ -46,7 +52,7 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
     ```
 
 
-## Run tests
+### Run tests
 
 Run Playwright tests against browsers managed by the service using the configuration you created above. You can run up to 50 parallel workers with the service
 ```powershell
@@ -54,7 +60,7 @@ Run Playwright tests against browsers managed by the service using the configura
 ```
 Note that by default NUnit will run all test files in parallel, while running tests inside each file sequentially (ParallelScope.Self). You can adjust this behavior using the NUnit.NumberOfTestWorkers parameter. Running test in parallel using ParallelScope.All or ParallelScope.Fixtures is not supported. Please refer to [Playwright documentation](https://playwright.dev/dotnet/docs/test-runners#running-nunit-tests-in-parallel). 
 
-## Add more configuration
+### Add more configuration
 
 You can use the following environment variables to specify configuration parameters for the service:
 
