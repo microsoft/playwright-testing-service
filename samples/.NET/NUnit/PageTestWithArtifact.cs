@@ -32,11 +32,15 @@ namespace PlaywrightTests
         [TearDown]
         public async Task TearDown()
         {
+            /* On Windows, Its possble that path exceed 255 characters.
+             * if it does, feel free to change the path to a shorter one.
+             * possibly removing test name.
+             */
             // Stop trace and add it as an attachment
             var tracePath = Path.Combine(
                 TestContext.CurrentContext.WorkDirectory,
                 "playwright-traces",
-                $"{TestContext.CurrentContext.Test.Name}.zip"
+                $"{TestContext.CurrentContext.Test.Name}.{Guid.NewGuid()}.zip"
             );
             await Context.Tracing.StopAsync(new()
             {
