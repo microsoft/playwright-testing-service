@@ -10,6 +10,25 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
 Follow Documentation [here](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/playwrighttesting/Azure.Developer.MicrosoftPlaywrightTesting.NUnit)
 
+### Content on this sample project
+- [PlaywrightServiceSetup.cs](./PlaywrightServiceSetup.cs): **Requiried** to be added to your project to setup the service, make sure to change the namespace to your project namespace
+- [.runsettings](./.runsettings): Optional but recommended to be added to your project to better control service configuration params like Os, RunId, ServiceAuthType, UseCloudHostedBrowsers, ExposeNetwork
+- [PageTestWithArtifact.cs](./PageTestWithArtifact.cs): Optional but recommended, If you use PageTest fixture in your test class, this enherit class enable and attach artifacts to the test results
+- [ContextTestWithArtifact.cs](./ContextTestWithArtifact.cs): Optional but recommended, If you use ContextTest fixture in your test class, this enherit class enable and attach artifacts to the test results
+- [BrowserTestWithArtifact.cs](./BrowserTestWithArtifact.cs): Optional but recommended, If you use BrowserTest fixture in your test class, this enherit class enable and attach artifacts to the test results
+- [PlaywrightTestWithArtifact.cs](./PlaywrightTestWithArtifact.cs): Optional but recommended, If you use PlaywrightTest fixture in your test class, this enherit class enable and attach artifacts to the test results
+
+### Sample way to extend new fixtures
+- public class Tests : PageTestWithArtifact // for PageTest fixture
+- public class Tests : ContextTestWithArtifact // for ContextTest fixture
+- public class Tests : BrowserTestWithArtifact // for BrowserTest fixture
+- public class Tests : PlaywrightTestWithArtifact // for PlaywrightTest fixture
+
+### How to run tests
+- set the environment variable `PLAYWRIGHT_SERVICE_URL` to the region endpoint URL, Detailed steps [here](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/playwrighttesting/Azure.Developer.MicrosoftPlaywrightTesting.NUnit)
+- az login // login with your azure credentials, make sure this credential have access to the workspace
+- dotnet test --settings .runsettings // if using .runsettings
+- dotnet test --logger "microsoft-playwright-testing" -- NUnit.NumberOfTestWorkers=10 // if not using .runsettings
 
 ## Legacy way (Without Package -  No Reporting )
 ### Sample setup
