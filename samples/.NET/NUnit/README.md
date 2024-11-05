@@ -8,7 +8,7 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
 ## MPT package integration
 
-TBD - Link to azure-sdk-for-net Readme
+Follow Documentation [here](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/playwrighttesting/Azure.Developer.MicrosoftPlaywrightTesting.NUnit)
 
 
 ## Legacy way (Without Package -  No Reporting )

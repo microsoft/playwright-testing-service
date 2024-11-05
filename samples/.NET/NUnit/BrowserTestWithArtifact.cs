@@ -5,20 +5,28 @@ using NUnit.Framework.Interfaces;
 
 namespace PlaywrightTests
 {
-    /*
-     * PageTestWithArtifact is a base class for tests that require Playwright page and context.
+    /* 
+     * BrowserTestWithArtifact is a base class for tests that require Playwright page and context.
      * It provides a setup and teardown methods for the test to run in a browser context.
      * It also provides a way to enable trace, screenshot, and video artifacts for the test.
-     * Users need to inherit this class instead of PageTest to write tests.
+     * Users need to inherit this class instead of BrowserTest to write tests.
      */
     [TestFixture]
-    public class PageTestWithArtifact : PageTest
+    public class BrowserTestWithArtifact : BrowserTest
     {
+
+        // Declare the Context and Page
+        private IPage Page;
+        private IBrowserContext Context;
+        private BrowserNewContextOptions ContextOption;
 
         [SetUp]
         public async Task Setup()
         {
-            TestContext.WriteLine("Browser: " + BrowserName);
+            // Create Context
+            ContextOption = new BrowserNewContextOptions { RecordVideoDir = ".videos" };
+            Context = await Browser.NewContextAsync(ContextOption);
+
             // Enable Trace
             await Context.Tracing.StartAsync(new()
             {
@@ -27,6 +35,8 @@ namespace PlaywrightTests
                 Snapshots = true,
                 Sources = true
             });
+            // Create a new page
+            Page = await Context.NewPageAsync();
         }
 
         [TearDown]
@@ -69,14 +79,6 @@ namespace PlaywrightTests
                 await Page.Video.SaveAsAsync(videoPath);
                 TestContext.AddTestAttachment(videoPath, description: "Video");
             }
-        }
-
-        public override BrowserNewContextOptions ContextOptions()
-        {
-            // Video enable via context option overriding the default context option.
-            var options = base.ContextOptions();
-            options.RecordVideoDir = ".videos"; // temp path to enable video recording
-            return options;
         }
     }
 }

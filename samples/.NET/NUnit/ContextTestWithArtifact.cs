@@ -5,15 +5,18 @@ using NUnit.Framework.Interfaces;
 
 namespace PlaywrightTests
 {
-    /*
-     * PageTestWithArtifact is a base class for tests that require Playwright page and context.
+    /* 
+     * ContextTestWithArtifact is a base class for tests that require Playwright context and page.
      * It provides a setup and teardown methods for the test to run in a browser context.
      * It also provides a way to enable trace, screenshot, and video artifacts for the test.
-     * Users need to inherit this class instead of PageTest to write tests.
+     * Users need to inherit this class instead of ContextTest to write tests.
      */
     [TestFixture]
-    public class PageTestWithArtifact : PageTest
+    public class ContextTestWithArtifact : ContextTest
     {
+
+        // Declare the Context and Page
+        public IPage Page;
 
         [SetUp]
         public async Task Setup()
@@ -27,6 +30,7 @@ namespace PlaywrightTests
                 Snapshots = true,
                 Sources = true
             });
+            Page = await Context.NewPageAsync();
         }
 
         [TearDown]
@@ -43,7 +47,6 @@ namespace PlaywrightTests
                 Path = tracePath
             });
             TestContext.AddTestAttachment(tracePath, description: "Trace");
-
             // Take a screenshot on error and add it as an attachment
             if (TestContext.CurrentContext.Result.Outcome == ResultState.Error)
             {
