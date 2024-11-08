@@ -1,0 +1,39 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Nunit Playwright Test Sample
+# on: [push]
+
+permissions: # Required when using AuthType as EntraId
+  id-token: write
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: './samples/.NET/NUnit'
+    environment: Production
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ${{env.working-directory}}
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ${{env.working-directory}}
+    - name: Azure CLI Login # Required when using AuthType as EntraId
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }} # Create ManagedIdentity in azure and assign required roles
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --settings .runsettings
+      working-directory: ${{env.working-directory}}
+      env:
+        PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }} 
+        #PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }} for AccessToken Auth
