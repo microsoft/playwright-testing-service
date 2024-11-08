@@ -13,10 +13,10 @@ Follow Documentation [here](https://github.com/Azure/azure-sdk-for-net/tree/main
 ### Content on this sample project
 - [PlaywrightServiceSetup.cs](./PlaywrightServiceSetup.cs): **Requiried** to be added to your project to setup the service, make sure to change the namespace to your project namespace
 - [.runsettings](./.runsettings): Optional but recommended to be added to your project to better control service configuration params like Os, RunId, ServiceAuthType, UseCloudHostedBrowsers, ExposeNetwork
-- [PageTestWithArtifact.cs](./PageTestWithArtifact.cs): Optional but recommended, If you use PageTest fixture in your test class, this enherit class enable and attach artifacts to the test results
-- [ContextTestWithArtifact.cs](./ContextTestWithArtifact.cs): Optional but recommended, If you use ContextTest fixture in your test class, this enherit class enable and attach artifacts to the test results
-- [BrowserTestWithArtifact.cs](./BrowserTestWithArtifact.cs): Optional but recommended, If you use BrowserTest fixture in your test class, this enherit class enable and attach artifacts to the test results
-- [PlaywrightTestWithArtifact.cs](./PlaywrightTestWithArtifact.cs): Optional but recommended, If you use PlaywrightTest fixture in your test class, this enherit class enable and attach artifacts to the test results
+- [PageTestWithArtifact.cs](./PageTestWithArtifact.cs): Optional but recommended, If you use PageTest fixture in your test class, this inherit class enable and attach artifacts to the test results
+- [ContextTestWithArtifact.cs](./ContextTestWithArtifact.cs): Optional but recommended, If you use ContextTest fixture in your test class, this inherit class enable and attach artifacts to the test results
+- [BrowserTestWithArtifact.cs](./BrowserTestWithArtifact.cs): Optional but recommended, If you use BrowserTest fixture in your test class, this inherit class enable and attach artifacts to the test results
+- [PlaywrightTestWithArtifact.cs](./PlaywrightTestWithArtifact.cs): Optional but recommended, If you use PlaywrightTest fixture in your test class, this inherit class enable and attach artifacts to the test results
 
 ### Sample way to extend new fixtures
 - public class Tests : PageTestWithArtifact // for PageTest fixture
@@ -29,6 +29,7 @@ Follow Documentation [here](https://github.com/Azure/azure-sdk-for-net/tree/main
 - az login // login with your azure credentials, make sure this credential have access to the workspace
 - dotnet test --settings .runsettings // if using .runsettings
 - dotnet test --logger "microsoft-playwright-testing" -- NUnit.NumberOfTestWorkers=10 // if not using .runsettings
+- dotnet test --settings .\.runsettings --% -- TestRunParameters.Parameter(name=\"RunId\", value=\"sample-run-id1\") // pwsh command to pass runId as parameter
 
 ## Legacy way (Without Package -  No Reporting )
 ### Sample setup

@@ -16,16 +16,23 @@ namespace PlaywrightTests
     {
 
         // Declare the Context and Page
-        private IPage Page;
-        private IBrowserContext Context;
-        private BrowserNewContextOptions ContextOption;
+        public IPage Page { get; private set; } = null!;
+        public IBrowserContext Context { get; private set; } = null!;
+        public virtual BrowserNewContextOptions ContextOptions()
+        {
+            return new()
+            {
+                Locale = "en-US",
+                ColorScheme = ColorScheme.Light,
+                RecordVideoDir = ".videos"
+            };
+        }
 
         [SetUp]
         public async Task Setup()
         {
             // Create Context
-            ContextOption = new BrowserNewContextOptions { RecordVideoDir = ".videos" };
-            Context = await Browser.NewContextAsync(ContextOption);
+            Context = await Browser.NewContextAsync(ContextOptions());
 
             // Enable Trace
             await Context.Tracing.StartAsync(new()

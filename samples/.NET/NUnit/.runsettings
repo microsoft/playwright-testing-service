@@ -9,6 +9,7 @@
         <Parameter name="AzureTokenCredentialType" value="DefaultAzureCredential" />
         <!--<Parameter name="ManagedIdentityClientId" value="{clientId-value}" />-->
         <Parameter name="EnableGitHubSummary" value="false" />
+        <!--<Parameter name="ExposeNetwork" value="*" />-->
     </TestRunParameters>
   <!-- NUnit adapter -->  
   <NUnit>

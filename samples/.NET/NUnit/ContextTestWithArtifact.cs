@@ -15,8 +15,8 @@ namespace PlaywrightTests
     public class ContextTestWithArtifact : ContextTest
     {
 
-        // Declare the Context and Page
-        public IPage Page;
+        // Declare Page
+        public IPage Page { get; private set; } = null!;
 
         [SetUp]
         public async Task Setup()
