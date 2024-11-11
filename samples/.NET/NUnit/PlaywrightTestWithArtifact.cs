@@ -2,10 +2,8 @@
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using Microsoft.Playwright.TestAdapter;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using System.Globalization;
 
 namespace PlaywrightTests
 {
