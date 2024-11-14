@@ -4,6 +4,8 @@ using Microsoft.Playwright.NUnit;
 using Microsoft.Playwright.TestAdapter;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace PlaywrightTests
 {
@@ -34,10 +36,27 @@ namespace PlaywrightTests
         [SetUp]
         public async Task Setup()
         {
-            // Connect Remote Browser using BrowserType.ConnectAsync
-            var playwrightService = new PlaywrightService();
-            var connectOptions = await playwrightService.GetConnectOptionsAsync<BrowserTypeConnectOptions>();
-            Browser = await BrowserType.ConnectAsync(connectOptions.WsEndpoint!, connectOptions.Options!);
+            if (TestContext.Parameters.Get(RunSettingKey.UseCloudHostedBrowsers) == "false")
+            {
+                Browser = await BrowserType.LaunchAsync(PlaywrightSettingsProvider.LaunchOptions);
+            } else {
+                /* Connect Remote Browser using BrowserType.ConnectAsync
+                 * fetches service connect options like wsEndpoint and options
+                 * add x-playwright-launch-options header to pass launch options likes channel, headless, etc.
+                 */
+                var playwrightService = new PlaywrightService();
+                var connectOptions = await playwrightService.GetConnectOptionsAsync<BrowserTypeConnectOptions>();
+                var launchOptionString = System.Text.Json.JsonSerializer.Serialize(PlaywrightSettingsProvider.LaunchOptions, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+                if (connectOptions.Options!.Headers != null)
+                {
+                    connectOptions.Options.Headers = connectOptions.Options.Headers.Concat(new Dictionary<string, string> { { "x-playwright-launch-options", launchOptionString } });
+                }
+                else
+                {
+                    connectOptions.Options.Headers = new Dictionary<string, string> { { "x-playwright-launch-options", launchOptionString } };
+                }
+                Browser = await BrowserType.ConnectAsync(connectOptions.WsEndpoint!, connectOptions.Options!);
+            }
 
             // Create context and page
             Context = await Browser.NewContextAsync(ContextOptions());
