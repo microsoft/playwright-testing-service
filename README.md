@@ -100,6 +100,8 @@ Microsoft Entra ID uses your Azure credentials, requiring a sign-in to your Azur
 
 You can follow any one of the authentication methods below:
 
+> We strongly recommend using Microsoft Entra ID for authentication to the service. 
+
 #### Set up authtication using Microsoft Entra ID 
 
 Microsoft Entra ID is the default and recommended authentication for the service. From your local dev machine, you can use [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) to sign-in
