@@ -12,6 +12,7 @@
   "devDependencies": {
     "@azure/microsoft-playwright-testing": "^1.0.0-beta.3",
     "@playwright/test": "^1.47",
+    "@types/node": "^18.19.68",
     "dotenv": "^16.4.5"
   }
 }
