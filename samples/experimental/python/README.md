@@ -2,6 +2,8 @@
 
 This sample demonstrates how to run Playwright Python tests at scale using Microsoft Playwright Testing. It showcases the benefits of accelerating test suite completion by leveraging more parallel cloud browsers. The tests are executed using Pytest runner.
 
+**Note** - You won't be able to get the support for reporting and authentication to the service from the client running the tests via Entra ID.
+
 If you have not yet created a workspace, please follow the [Get Started guide](../../../README.md#get-started)
 
 ## Sample setup
