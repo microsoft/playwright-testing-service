@@ -23,7 +23,7 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
 1. Set up Authentication using Access Tokens:
 
-    Currently, only access tokens are supported for Python. See [Set up authentication using access tokens](../../../../README.md#set-up-authentication-using-access-tokens)
+    Currently, only access tokens are supported for Java. See [Set up authentication using access tokens](../../../../README.md#set-up-authentication-using-access-tokens)
 
 1. Set access token generated above as environment variable for your project:
 
