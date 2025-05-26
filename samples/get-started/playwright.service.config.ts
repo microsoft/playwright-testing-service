@@ -1,7 +1,9 @@
 import { defineConfig } from '@playwright/test';
 import { getServiceConfig, ServiceOS } from '@azure/microsoft-playwright-testing';
 import config from './playwright.config';
+import { AzureCliCredential } from "@azure/identity";
 
+const azureCredential = new AzureCliCredential();
 /* Learn more about service configuration at https://aka.ms/mpt/config */
 export default defineConfig(
   config,
@@ -9,6 +11,7 @@ export default defineConfig(
     exposeNetwork: '<loopback>',
     timeout: 30000,
     os: ServiceOS.LINUX,
+    credential: azureCredential, // Custom token credential for Entra ID authentication
     useCloudHostedBrowsers: true
   }),
   {
