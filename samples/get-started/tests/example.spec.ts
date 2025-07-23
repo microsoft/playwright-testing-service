@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 // This sample simulates a larger test suite
-const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || "100");
+const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || "1");
 for (var i = 0; i < TEST_ITERATIONS; i++) {
 
   test('has title ' + i, async ({ page }) => {
