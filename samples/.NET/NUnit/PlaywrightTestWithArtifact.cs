@@ -7,6 +7,8 @@ using NUnit.Framework.Interfaces;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 
+// TODO need changes for this manual browser launch for migration
+
 namespace PlaywrightTests
 {
     /* 
@@ -39,7 +41,9 @@ namespace PlaywrightTests
             if (TestContext.Parameters.Get(RunSettingKey.UseCloudHostedBrowsers) == "false")
             {
                 Browser = await BrowserType.LaunchAsync(PlaywrightSettingsProvider.LaunchOptions);
-            } else {
+            }
+            else
+            {
                 /* Connect Remote Browser using BrowserType.ConnectAsync
                  * fetches service connect options like wsEndpoint and options
                  * add x-playwright-launch-options header to pass launch options likes channel, headless, etc.

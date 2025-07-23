@@ -8,7 +8,7 @@ namespace PlaywrightTests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class Tests : PageTestWithArtifact
+public class Tests : CloudBrowserPageTest
 {
     [Test]
     public async Task HomepageHasPlaywrightInTitleAndGetStartedLinkLinkingtoTheIntroPage()
