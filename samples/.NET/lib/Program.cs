@@ -6,8 +6,8 @@ static (string wsEndpoint, BrowserTypeConnectOptions options) GetConnectOptions(
 {
     var runId = Guid.NewGuid().ToString();
     var os = "linux"; // Change to "windows" if wants to run on Windows
-    var apiVersion = "2023-10-01-preview";// DONOT change
-    
+    var apiVersion = "2025-07-01-preview"; // DONOT change
+
     var serviceUrl = Environment.GetEnvironmentVariable("PLAYWRIGHT_SERVICE_URL") ?? "";
     var accessToken = Environment.GetEnvironmentVariable("PLAYWRIGHT_SERVICE_ACCESS_TOKEN") ?? "";
     

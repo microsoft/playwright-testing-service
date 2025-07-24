@@ -1,13 +1,13 @@
-# Run Playwright .NET tests with Microsoft Playwright Testing 
+# Run Playwright .NET tests with Playwright Workspace 
 
-This sample demonstrates how to run Playwright .NET to use browser at scale using Microsoft Playwright Testing. It showcases the benefits of accelerating test suite completion by leveraging more parallel cloud browsers. The tests are executed using dotnet library without Any runner.
+This sample demonstrates how to run Playwright .NET to use browser at scale using Playwright Workspace. It showcases the benefits of accelerating test suite completion by leveraging more parallel cloud browsers. The tests are executed using dotnet library without Any runner.
 
 If you have not yet created a workspace, please follow the [Get Started guide](../../../README.md#get-started)
 
 ### Sample setup
 1. Clone this sample:
     ```powershell
-    git clone https://github.com/microsoft/playwright-testing-service
+    git clone https://github.com/Azure/playwright-workspaces/
     cd playwright-workspaces/samples/.NET/lib
     ```
 
@@ -31,12 +31,12 @@ If you have not yet created a workspace, please follow the [Get Started guide](.
 
 
 1. Set up environment: 
-   In the [Playwright portal](https://aka.ms/mpt/portal), copy the command under **Add region endpoint in your set up** and set the following environment variable:
+   In the [Azure portal](https://portal.azure.com), Navigate to workspace and Getting Started tab, copy the command under **Add region endpoint in your set up** and set the following environment variable:
 
    ```bash
    PLAYWRIGHT_SERVICE_URL= # Paste region endpoint URL
     ```
-   - Generate access token following [guide](https://aka.ms/mpt/generate-access-token)
+   - Generate access token following [guide](https://aka.ms/pww/docs/generate-access-token)
     - Set the token generated in the previous step
     ```
     $env:PLAYWRIGHT_SERVICE_ACCESS_TOKEN="TOKEN_VALUE"
@@ -51,6 +51,6 @@ Run Playwright script against browsers managed by the service using the configur
 
    
 ## Next steps
-1. Follow the [quickstart guide](https://learn.microsoft.com/en-us/azure/playwright-testing/quickstart-run-end-to-end-tests?tabs=playwrightcli&pivots=nunit-test-runner)
-2. [Integrate CI/CD pipelines](https://learn.microsoft.com/en-us/azure/playwright-testing/quickstart-automate-end-to-end-testing?tabs=github&pivots=nunit-test-runner)
-3. Learn about [package options](https://learn.microsoft.com/en-us/azure/playwright-testing/how-to-use-service-config-file?pivots=nunit-test-runner).
+1. Follow the [quickstart guide](TBD)
+2. [Integrate CI/CD pipelines](TBD)
+3. Learn about [package options](TBD).
