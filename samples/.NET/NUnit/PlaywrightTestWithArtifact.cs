@@ -1,4 +1,4 @@
-﻿using Azure.Developer.MicrosoftPlaywrightTesting.TestLogger;
+﻿using Azure.Developer.Playwright;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using Microsoft.Playwright.TestAdapter;
@@ -6,8 +6,8 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Azure.Identity;
 
-// TODO need changes for this manual browser launch for migration
 
 namespace PlaywrightTests
 {
@@ -38,7 +38,9 @@ namespace PlaywrightTests
         [SetUp]
         public async Task Setup()
         {
-            if (TestContext.Parameters.Get(RunSettingKey.UseCloudHostedBrowsers) == "false")
+            // Check the DISABLE_PLAYWRIGHT_SERVICE environment variable
+            var disablePlaywrightService = Environment.GetEnvironmentVariable("DISABLE_PLAYWRIGHT_SERVICE");
+            if (string.Equals(disablePlaywrightService, "1", StringComparison.OrdinalIgnoreCase))
             {
                 Browser = await BrowserType.LaunchAsync(PlaywrightSettingsProvider.LaunchOptions);
             }
@@ -48,8 +50,13 @@ namespace PlaywrightTests
                  * fetches service connect options like wsEndpoint and options
                  * add x-playwright-launch-options header to pass launch options likes channel, headless, etc.
                  */
-                var playwrightService = new PlaywrightService();
-                var connectOptions = await playwrightService.GetConnectOptionsAsync<BrowserTypeConnectOptions>();
+                PlaywrightServiceBrowserClient client = new PlaywrightServiceBrowserClient(
+                    credential: new DefaultAzureCredential(),
+                    options: new PlaywrightServiceBrowserClientOptions
+                    {
+                        ServiceAuth = ServiceAuthType.EntraId // optional
+                    });
+                var connectOptions = await client.GetConnectOptionsAsync<BrowserTypeConnectOptions>();
                 var launchOptionString = System.Text.Json.JsonSerializer.Serialize(PlaywrightSettingsProvider.LaunchOptions, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
                 if (connectOptions.Options!.Headers != null)
                 {
@@ -68,10 +75,10 @@ namespace PlaywrightTests
             // Enable Trace
             await Context.Tracing.StartAsync(new()
             {
-                Title = $"{TestContext.CurrentContext.Test.Name}",
-                Screenshots = true,
-                Snapshots = true,
-                Sources = true
+            Title = $"{TestContext.CurrentContext.Test.Name}",
+            Screenshots = true,
+            Snapshots = true,
+            Sources = true
             });
             // Create a new page
             Page = await Context.NewPageAsync();
