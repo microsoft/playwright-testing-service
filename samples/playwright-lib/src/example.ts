@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 // Define your runId, os, and apiVersion
 const runId = randomUUID(); // replace it with env variable if needed.
 const os = 'linux'; // Replace with your desired OS linux or windows
-const apiVersion = '2025-07-01-preview'; // DONOT change
+const apiVersion = '2025-09-01'; // DONOT change
 
 // implement getConnectOption to generate wsendpoint
 async function getConnectOptions() {
