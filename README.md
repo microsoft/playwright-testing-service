@@ -1,5 +1,11 @@
 # Microsoft Playwright Testing preview
 
+> ⚠️ **This experience will be retired on March 8, 2026.**  
+> To continue running your Playwright tests, [create a new **Playwright Workspace**](https://aka.ms/pww/docs/quickstart) in **Azure App Testing**, now generally available.  
+> Azure App Testing also supports [**load testing**](https://aka.ms/loadtesting/docs), so you can scale your test scenarios with confidence.  
+> **[Learn how to migrate →](https://aka.ms/mpt/migration-guidance)**
+
+
 Microsoft Playwright Testing is a fully managed service that uses the cloud to enable you to run Playwright tests with much higher parallelization across different operating system-browser combinations simultaneously. Along with this, it enables you to publish test results and artifacts collected by Playwright to the service. This means faster test runs with broader scenario coverage, which helps speed up delivery of features without sacrificing quality.  
 
 Ready to get started? Jump into our [quickstart guide](#get-started)!
