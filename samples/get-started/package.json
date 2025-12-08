@@ -11,8 +11,8 @@
   "license": "MIT",
   "devDependencies": {
     "@azure/microsoft-playwright-testing": "^1.0.0-beta.3",
-    "@playwright/test": "^1.47",
-    "@types/node": "^18.19.68",
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^22.15.3",
     "dotenv": "^16.4.5"
   }
 }
