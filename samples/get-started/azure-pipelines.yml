@@ -21,7 +21,7 @@ steps:
 
 
 - task: PowerShell@2
-  enabled: 'true'
+  enabled: true
   displayName: "Install dependencies"
   inputs:
     targetType: 'inline'
@@ -29,7 +29,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/samples/get-started'
 
 - task: PowerShell@2
-  enabled: 'true'
+  enabled: true
   displayName: "Run Playwright tests"
   env:
     PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(Secret)
